@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="设计模式," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -83,18 +83,17 @@
 
 
 
-<meta name="description" content="定义：将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。  简单点描述就是将一个复杂对象的构建拆分成若干步骤，每个构建步骤赋予复杂对象不同的属性，如此以来，通过同样的构建过程可以创建不同的对象。对象的构建过程由指导者director指导。客户端通过指导者创建需要的对象。  该模式包含的角色及其功能：   产品：需要被构造的对象 建造者：具有一系列构建产品的方法的对象 指">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="title: 单例模式的几种实现 categories: 设计模式 tags:设计模式 饿汉式该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。123456789101112131415/** * Created by tiantian on 2018/6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="建造者模式">
-<meta property="og:url" content="http://yoursite.com/2018/06/19/builder/index.html">
+<meta property="og:title" content="田恬的博客">
+<meta property="og:url" content="http://yoursite.com/2018/07/01/singleton/index.html">
 <meta property="og:site_name" content="田恬的博客">
-<meta property="og:description" content="定义：将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。  简单点描述就是将一个复杂对象的构建拆分成若干步骤，每个构建步骤赋予复杂对象不同的属性，如此以来，通过同样的构建过程可以创建不同的对象。对象的构建过程由指导者director指导。客户端通过指导者创建需要的对象。  该模式包含的角色及其功能：   产品：需要被构造的对象 建造者：具有一系列构建产品的方法的对象 指">
+<meta property="og:description" content="title: 单例模式的几种实现 categories: 设计模式 tags:设计模式 饿汉式该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。123456789101112131415/** * Created by tiantian on 2018/6">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-19T12:47:35.000Z">
+<meta property="og:updated_time" content="2018-06-30T16:51:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="建造者模式">
-<meta name="twitter:description" content="定义：将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。  简单点描述就是将一个复杂对象的构建拆分成若干步骤，每个构建步骤赋予复杂对象不同的属性，如此以来，通过同样的构建过程可以创建不同的对象。对象的构建过程由指导者director指导。客户端通过指导者创建需要的对象。  该模式包含的角色及其功能：   产品：需要被构造的对象 建造者：具有一系列构建产品的方法的对象 指">
+<meta name="twitter:title" content="田恬的博客">
+<meta name="twitter:description" content="title: 单例模式的几种实现 categories: 设计模式 tags:设计模式 饿汉式该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。123456789101112131415/** * Created by tiantian on 2018/6">
 
 
 
@@ -124,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/19/builder/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/01/singleton/"/>
 
 
 
 
 
-  <title>建造者模式 | 田恬的博客</title>
+  <title> | 田恬的博客</title>
   
 
 
@@ -249,7 +248,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/builder/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/01/singleton/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tian-tian">
@@ -266,7 +265,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">建造者模式</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -278,8 +277,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-19T20:40:58+08:00">
-                2018-06-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T00:51:36+08:00">
+                2018-07-01
               </time>
             
 
@@ -289,28 +288,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -319,8 +296,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/06/19/builder/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/06/19/builder/" itemprop="commentsCount"></span>
+                <a href="/2018/07/01/singleton/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/01/singleton/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,7 +305,7 @@
 
           
           
-             <span id="/2018/06/19/builder/" class="leancloud_visitors" data-flag-title="建造者模式">
+             <span id="/2018/07/01/singleton/" class="leancloud_visitors" data-flag-title="">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -359,37 +336,33 @@
       
 
       
-        <ol>
-<li>定义：将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。</li>
-</ol>
-<p>简单点描述就是将一个复杂对象的构建拆分成若干步骤，每个构建步骤赋予复杂对象不同的属性，如此以来，通过同样的构建过程可以创建不同的对象。对象的构建过程由指导者director指导。客户端通过指导者创建需要的对象。</p>
-<ol start="2">
-<li>该模式包含的角色及其功能：</li>
-</ol>
-<ul>
-<li>产品：需要被构造的对象</li>
-<li>建造者：具有一系列构建产品的方法的对象</li>
-<li>指导者：负责调用建造者，执行建造者一系列的建造方法</li>
-</ul>
-<ol start="3">
-<li>使用情景：</li>
-</ol>
-<ul>
-<li>当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时</li>
-<li>当构造过程允许被构造的对象有不同的表示时</li>
-</ul>
-<ol start="4">
-<li>示例代码：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 抽象汽车建造者接口.</span><br><span class="line"> */</span><br><span class="line">public interface ICarBulider &#123;</span><br><span class="line"></span><br><span class="line">    void composeEngine(String engine);</span><br><span class="line"></span><br><span class="line">    void composeSteelingWheel(String steelingWheel);</span><br><span class="line"></span><br><span class="line">    void composeWheel(String wheel);</span><br><span class="line"></span><br><span class="line">    Car buildCar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 被建造的产品（汽车）.</span><br><span class="line"> */</span><br><span class="line">public class Car &#123;</span><br><span class="line">    </span><br><span class="line">    private String Engine;</span><br><span class="line">    /**</span><br><span class="line">     * desc:方向盘</span><br><span class="line">     */</span><br><span class="line">    private String SteelingWheel;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * desc:轮子</span><br><span class="line">     */</span><br><span class="line">    private String wheel;</span><br><span class="line"></span><br><span class="line">    public String getEnging() &#123;</span><br><span class="line">        return Enging;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setEnging(String enging) &#123;</span><br><span class="line">        Enging = enging;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getSteelingWheel() &#123;</span><br><span class="line">        return SteelingWheel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSteelingWheel(String steelingWheel) &#123;</span><br><span class="line">        SteelingWheel = steelingWheel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getWheel() &#123;</span><br><span class="line">        return wheel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setWheel(String wheel) &#123;</span><br><span class="line">        this.wheel = wheel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Car&#123;&quot; +</span><br><span class="line">                &quot;Enging=&apos;&quot; + Enging + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;, SteelingWheel=&apos;&quot; + SteelingWheel + &apos;\&apos;&apos; +</span><br><span class="line">                &quot;, wheel=&apos;&quot; + wheel + &apos;\&apos;&apos; +</span><br><span class="line">                &apos;&#125;&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 具体的汽车建造者</span><br><span class="line"> */</span><br><span class="line">public class CarBuilder implements ICarBulider &#123;</span><br><span class="line">    </span><br><span class="line">    private Car car = new Car();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void composeEngine(String engine) &#123;</span><br><span class="line">        car.setEnging(engine);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void composeSteelingWheel(String steelingWheel) &#123;</span><br><span class="line">        car.setSteelingWheel(steelingWheel);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void composeWheel(String wheel) &#123;</span><br><span class="line">        car.setWheel(wheel);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public Car buildCar() &#123;</span><br><span class="line">        return car;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 指导者</span><br><span class="line"> */</span><br><span class="line">public class Director &#123;</span><br><span class="line">    public static Car constructCar(ICarBulider carBulider) &#123;</span><br><span class="line">        carBulider.composeEngine(&quot;德国制造&quot;);</span><br><span class="line">        carBulider.composeWheel(&quot;四轮子汽车轮胎&quot;);</span><br><span class="line">        carBulider.composeSteelingWheel(&quot;单幅&quot;);</span><br><span class="line">        return carBulider.buildCar();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 测试客户端</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Car car = Director.constructCar(new CarBuilder());</span><br><span class="line">        System.err.println(car.toString());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">控制台打印结果：</span><br><span class="line">Car&#123;Enging=&apos;德国制造&apos;, SteelingWheel=&apos;单幅&apos;, wheel=&apos;四轮子汽车轮胎&apos;&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>延伸</li>
-</ol>
-<p>当建造者是系统具体的一个类的时候，指导者可以省略。其结果就是指导者和建造者合二为一。</p>
+        <p>title: 单例模式的几种实现 categories:</p>
+<p>设计模式 tags:<br>设计模式</p>
+<h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/6/29.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class HungrySingleTon &#123;</span><br><span class="line">    private static HungrySingleTon uniqueInstance = new HungrySingleTon();</span><br><span class="line">    </span><br><span class="line">    private HungrySingleTon()&#123;</span><br><span class="line">        System.out.println(&quot;HungrySingleTon is creating a instance.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static HungrySingleTon getInstance() &#123;</span><br><span class="line">        return uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><p>懒汉式是一种延迟创建对象的方式。不是像饿汉一般一上来不管三七二十一就创建对象，而是在只有在需要的时候创建。此方式虽然也简单，但存在线程安全问题。在一般对性能要求不高的场景中，只要在getInstance()前加上synchronized关键字也能解决线程安全问题。只是每次获取单例对象都要同步对性能稍有影响。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/6/29.</span><br><span class="line"> */</span><br><span class="line">public class LazySingleton &#123;</span><br><span class="line">    </span><br><span class="line">    private static LazySingleton uniqueInstance;</span><br><span class="line">    </span><br><span class="line">    private LazySingleton() &#123;</span><br><span class="line">        System.out.println(&quot;LazySingleton is creating a instance.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static LazySingleton getInstance() &#123;</span><br><span class="line">        if (uniqueInstance == null) &#123;</span><br><span class="line">            return new LazySingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="双重检验锁"><a href="#双重检验锁" class="headerlink" title="双重检验锁"></a>双重检验锁</h3><p>这种方式synchronized关键字使用在了创建对象的具体时刻（第一次创建时）。并且使用了volatile关键字进一步使线程安全提高。关于volatile的作用如下：</p>
+<p>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</p>
+<p>2）禁止进行指令重排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadSafeSingleton &#123;</span><br><span class="line"></span><br><span class="line">    private volatile static ThreadSafeSingleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    private ThreadSafeSingleton() &#123;</span><br><span class="line">        System.out.println(&quot;ThreadSafeSingleton is creating a instance.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static  ThreadSafeSingleton getInstance() &#123;</span><br><span class="line">        if (uniqueInstance == null) &#123;</span><br><span class="line">            synchronized (ThreadSafeSingleton.class) &#123;</span><br><span class="line">                if (uniqueInstance == null) &#123;</span><br><span class="line">                    return new ThreadSafeSingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>使用枚举的方式实现单例模式最简单，性能更是不在话下。不仅能避免多线程同步问题，也能防止反序列化重新创建对象。</p>
+<p>enum Singleton {<br>    INSTANCE;</p>
+<pre><code>private String property1;
+
+private String property2;
+
+public void doSomething() {
+    System.out.println(&quot;Singleton do something...&quot;);
+}
+
+public void setProperty1(String p) {
+    this.property1 = p;
+}
+
+public void showProperty1() {
+    System.out.println(property1);
+}
+</code></pre><p>}</p>
 
       
     </div>
@@ -429,12 +402,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
-          
-        </div>
-      
 
       
       
@@ -444,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/10/factory/" rel="next" title="工厂模式">
-                <i class="fa fa-chevron-left"></i> 工厂模式
+              <a href="/2018/06/19/builder/" rel="next" title="建造者模式">
+                <i class="fa fa-chevron-left"></i> 建造者模式
               </a>
             
           </div>
@@ -453,10 +420,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/01/singleton/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -596,6 +568,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉式"><span class="nav-number">1.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒汉式"><span class="nav-number">2.</span> <span class="nav-text">懒汉式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双重检验锁"><span class="nav-number">3.</span> <span class="nav-text">双重检验锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举"><span class="nav-number">4.</span> <span class="nav-text">枚举</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
