@@ -248,6 +248,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/Strategy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="田恬的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/14/Strategy/" itemprop="url">设计模式初探—原型模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T20:13:42+08:00">
+                2018-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/14/Strategy/" class="leancloud_visitors" data-flag-title="设计模式初探—原型模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>策略模式是一种行为型设计模式，维基百科解释如下</p>
+<blockquote>
+<p>行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。</p>
+</blockquote>
+<p> 由此可以看出，行为型设计模式关注的是对象之间的通讯行为。</p>
+<ul>
+<li>定义</li>
+</ul>
+<p>策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。</p>
+<ul>
+<li><p>角色分类<br>1.抽象策略接口<br>2.具体策略类<br>3.环境类</p>
+</li>
+<li><p>UML图：</p>
+</li>
+</ul>
+<p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0" alt="image"></p>
+<p>常点外卖的大概都知道，美团或者饿了么支付时会有一项延迟险可选。美团是迟到十分钟只用支付90%的费用，迟到三十分钟只用支付70%。迟到十分钟之内是可以容忍的，毕竟外卖小哥也十分不容易。无论刮风下雨都要完成客户的吃饭需求。我们以延迟险为例构建示例代码。</p>
+<ul>
+<li>示例代码</li>
+</ul>
+<p>首先是抽象延迟险策略类，方法computePrice会根据不同的策略类的实现计算出客户实际上需要支付的价格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public interface OverdueInsurenceStrategy &#123;</span><br><span class="line">    </span><br><span class="line">    double computePrice(double price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>三个具体的实现类分别为正常到达，迟到十分钟和迟到三十分钟。<br>正常到达输出原价。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class NormalStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>迟到十分钟会有0.9的折扣。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class TenMinuteLateStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.9;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>迟到三十分钟0.7的折扣。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class ThirtyMinutesStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.7;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>支付环境拥有一个OverdueInsurenceStrategy类型对象，并且会根据具体的策略对象计算出该订单实际的费用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class PayContext &#123;</span><br><span class="line">    </span><br><span class="line">    OverdueInsurenceStrategy strategy;</span><br><span class="line">    </span><br><span class="line">    PayContext(OverdueInsurenceStrategy strategy) &#123;</span><br><span class="line">        this.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void pay(double price) &#123;</span><br><span class="line">        System.out.println(strategy.computePrice(price) + &quot; RMB&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>客户端测试类如下。假设下雨天，外卖小哥迟到了十分钟。那么客户端采用的具体策略为TenMinuteLateStrategy。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        OverdueInsurenceStrategy tenMinStrategy = new TenMinuteLateStrategy();</span><br><span class="line">        PayContext context = new PayContext(tenMinStrategy);</span><br><span class="line">        context.pay(22.9); // output : 20.61 RMB</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>策略模式的定义中强调了该模式中，算法的变化独立于算法的使用者。用该示例来说就是，假如美团延迟险赔偿比例发生了变化，那么具体的策略类的实现必然会变，而算法的使用者（示例中的客户端）并不知晓这一变化。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/07/prototype/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -267,7 +449,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/07/07/prototype/" itemprop="url">原型模式</a></h1>
+                <a class="post-title-link" href="/2018/07/07/prototype/" itemprop="url">设计模式初探—原型模式</a></h1>
         
 
         <div class="post-meta">
@@ -319,7 +501,7 @@
 
           
           
-             <span id="/2018/07/07/prototype/" class="leancloud_visitors" data-flag-title="原型模式">
+             <span id="/2018/07/07/prototype/" class="leancloud_visitors" data-flag-title="设计模式初探—原型模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -611,7 +793,7 @@ public void showProperty1() {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/19/builder/" itemprop="url">建造者模式</a></h1>
+                <a class="post-title-link" href="/2018/06/19/builder/" itemprop="url">设计模式初探—建造者模式</a></h1>
         
 
         <div class="post-meta">
@@ -663,7 +845,7 @@ public void showProperty1() {
 
           
           
-             <span id="/2018/06/19/builder/" class="leancloud_visitors" data-flag-title="建造者模式">
+             <span id="/2018/06/19/builder/" class="leancloud_visitors" data-flag-title="设计模式初探—建造者模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -794,7 +976,7 @@ public void showProperty1() {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/10/factory/" itemprop="url">工厂模式</a></h1>
+                <a class="post-title-link" href="/2018/06/10/factory/" itemprop="url">设计模式初探—工厂模式</a></h1>
         
 
         <div class="post-meta">
@@ -846,7 +1028,7 @@ public void showProperty1() {
 
           
           
-             <span id="/2018/06/10/factory/" class="leancloud_visitors" data-flag-title="工厂模式">
+             <span id="/2018/06/10/factory/" class="leancloud_visitors" data-flag-title="设计模式初探—工厂模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -993,7 +1175,7 @@ public void showProperty1() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
