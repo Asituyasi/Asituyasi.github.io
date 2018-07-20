@@ -248,6 +248,338 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/findMaximunSubArray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="田恬的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/findMaximunSubArray/" itemprop="url">最大子数组问题的解法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T22:52:48+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/20/findMaximunSubArray/" class="leancloud_visitors" data-flag-title="最大子数组问题的解法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>所谓最大子数组就是连续的若干数组元素，如果其和是最大的，那么这个子数组就称为该数组的最大子数组。最大子数组是很多问题的抽象，比如购买股票。如果把相邻两天的股价之差作为数组元素，那么求在连续的某个时间段内买入股票的最佳时间和卖出股票的最佳时间就可以抽象为计算最大子数组的问题。下面分别介绍两种算法求解最大子数组问题，算法思想均来自算法导论这本程序员的圣经。</p>
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法实现思路比较简单。如果把一个数组从中间点分为左右两个子数组，那么最大子数组可能存在的位置可能存在的情况有三种：</p>
+<ol>
+<li>最大子数组在左边的数组中</li>
+<li>最大子数组在右边数组中</li>
+<li>最大子数组跨越了左右两个子数组</li>
+</ol>
+<p>左右两个子数组可以以同样的方式递归的划分为规模更小的子数组，直到不能划分为止，此时出现了递归的基本情况。比较三种情况的计算结果就能得知最大子数组。分治法可以在O(NlogN)的时间复杂度内计算出最大子数组，效率还是比较乐观的。</p>
+<p>在第三种情况中采用的算法是，从中间点向数组的左右两边遍历，分别求出左右两边的最大子数组。然后左右两边的子数组相加即为跨越中间点的最大子数组。本人研究这中算法有一点心的：寻找最大子数组的过程其实本质上是findMaximumSubArray方法在比较计算，该方法充当了分治法三个步骤中分解、解决、合并的合并步骤。合并的方法往往是真正做事情的方法，而解决的步骤都会包含合并步骤。而解决又不断递归的调用自身，从而以一种大问题化为小问题，小问题最后又合并为大问题的方式把问题解决。不得不说分治法是一种非常强大的思想！不想当一辈子码农的码农们真应该静下心来好好学习学习，而不是整天担忧程序员三十岁以后该怎么怎么办。做好今天的自己，明天自然是美好的！这话说给自己，同时也和所有同行共勉。</p>
+<p>以下为java的实现和测试。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 分治法求解最大子数组</span><br><span class="line"> * Created by tiantian on 2018/7/18.</span><br><span class="line"> */</span><br><span class="line">public class FindMaximumSubArray &#123;</span><br><span class="line">    </span><br><span class="line">    public static Map findMaximumSubArray(Integer[] array, int low, int height) &#123;</span><br><span class="line">        Map&lt;String, Integer&gt; map = new HashMap();</span><br><span class="line">        if (low == height) &#123;</span><br><span class="line">            map.put(&quot;low&quot;, low);</span><br><span class="line">            map.put(&quot;height&quot;, height);</span><br><span class="line">            map.put(&quot;max&quot;,array[low]);</span><br><span class="line">            return map;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int mid = (low+height)/2;//分解</span><br><span class="line">        Map&lt;String, Integer&gt; left = findMaximumSubArray(array, low, mid);//解决</span><br><span class="line">        Map&lt;String, Integer&gt; right = findMaximumSubArray(array, mid+1, height);// 解决</span><br><span class="line">        Map&lt;String, Integer&gt; midMap = findMaxCrossingSubArray(array, low, mid, height);//合并</span><br><span class="line">        </span><br><span class="line">        Map retMap = new HashMap();</span><br><span class="line">        if (left.get(&quot;max&quot;) &gt;= right.get(&quot;max&quot;) &amp;&amp; left.get(&quot;max&quot;) &gt;= midMap.get(&quot;max&quot;)) &#123;</span><br><span class="line">            retMap.put(&quot;low&quot;, left.get(&quot;low&quot;));</span><br><span class="line">            retMap.put(&quot;height&quot;, left.get(&quot;height&quot;));</span><br><span class="line">            retMap.put(&quot;max&quot;, left.get(&quot;max&quot;));</span><br><span class="line">        &#125; else if (right.get(&quot;max&quot;) &gt;= left.get(&quot;max&quot;) &amp;&amp; right.get(&quot;max&quot;) &gt;= midMap.get(&quot;max&quot;)) &#123;</span><br><span class="line">            retMap.put(&quot;low&quot;, right.get(&quot;low&quot;));</span><br><span class="line">            retMap.put(&quot;height&quot;, right.get(&quot;height&quot;));</span><br><span class="line">            retMap.put(&quot;max&quot;, right.get(&quot;max&quot;));</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            retMap.put(&quot;low&quot;, midMap.get(&quot;low&quot;));</span><br><span class="line">            retMap.put(&quot;height&quot;, midMap.get(&quot;height&quot;));</span><br><span class="line">            retMap.put(&quot;max&quot;, midMap.get(&quot;max&quot;));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return retMap;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /**</span><br><span class="line">     * desc:求横穿中间点的最大子数组</span><br><span class="line">     */</span><br><span class="line">    public static Map findMaxCrossingSubArray(Integer[] array, int low, int mid, int height) &#123;</span><br><span class="line">        int leftSum = -65535;</span><br><span class="line">        int maxLeft  = 0;</span><br><span class="line">        int tempSum = 0;</span><br><span class="line">        for (int i = mid; i &gt;= low; i--) &#123;</span><br><span class="line">            tempSum = tempSum + array[i];</span><br><span class="line">            if (tempSum &gt; leftSum) &#123;</span><br><span class="line">                leftSum = tempSum;</span><br><span class="line">                maxLeft = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        tempSum = 0;</span><br><span class="line">        int rightSum = -65535;</span><br><span class="line">        int maxRight = 0;</span><br><span class="line">        for (int j = mid+1; j &lt;= height; j++) &#123;</span><br><span class="line">            tempSum = tempSum + array[j];</span><br><span class="line">            if (tempSum &gt; rightSum) &#123;</span><br><span class="line">                rightSum = tempSum;</span><br><span class="line">                maxRight = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Map&lt;String, Integer&gt; map = new HashMap();</span><br><span class="line">        map.put(&quot;low&quot;, maxLeft);</span><br><span class="line">        map.put(&quot;height&quot;, maxRight);</span><br><span class="line">        map.put(&quot;max&quot;, leftSum+rightSum);</span><br><span class="line">        return map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 最大子数组测试客户端</span><br><span class="line"> * Created by tiantian on 2018/7/19</span><br><span class="line"> */</span><br><span class="line">public class TestClient &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer[] testArray = &#123;-500,10,5,5,2,-3,-29,-10,-50,22,-23,10,150,1,9,-900,-26,3,99,7&#125;;</span><br><span class="line">        for (int i = 0; i &lt; testArray.length; i++) &#123;</span><br><span class="line">            System.out.print(testArray[i] + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        int length = testArray.length;</span><br><span class="line">        Map map = FindMaximumSubArray.findMaximumSubArray(testArray, 0, length-1);</span><br><span class="line">        System.out.println(&quot;左下标：&quot; + map.get(&quot;low&quot;));</span><br><span class="line">        System.out.println(&quot;右下标：&quot; + map.get(&quot;height&quot;));</span><br><span class="line">        System.out.println(&quot;最大和：&quot; + map.get(&quot;max&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">// 输出：</span><br><span class="line">// -500,10,5,5,2,-3,-29,-10,-50,22,-23,10,150,1,9,-900,-26,3,99,7</span><br><span class="line">// 左下标：11</span><br><span class="line">// 右下标：14</span><br><span class="line">// 最大和：170</span><br></pre></td></tr></table></figure>
+<h2 id="线性法"><a href="#线性法" class="headerlink" title="线性法"></a>线性法</h2><p>实在不知道如何命名这种算法，因为该算法能在线性时间内计算出最大子数组，所以姑且叫做线性法吧。整个计算过程只需要遍历一遍数组就能得出结论，很明显，这是一种性能优于分治法的方式。以下为实现代码，代码中解释了算法的思路。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 线性时间查找最大子数组,返回两个下标</span><br><span class="line"> * Created by tiantian on 2018/7/19</span><br><span class="line"> */</span><br><span class="line">public class MaximumSubArray &#123;</span><br><span class="line">    </span><br><span class="line">    public static Integer find(Integer[] array) &#123;</span><br><span class="line">        // 当前迭代元素之前的最大子数组之和(不包含当前迭代元素)</span><br><span class="line">        Integer ahead = array[0];</span><br><span class="line">        // 包含当前迭代元素的最大子数组</span><br><span class="line">        Integer containCurent = array[0];</span><br><span class="line"> </span><br><span class="line">        /**</span><br><span class="line">         * 当前最大子数组有两种种情况:</span><br><span class="line">         * 情况1：不包含当前迭代元素，也就是 array[i].</span><br><span class="line">         * 情况2:包含当前迭代元素,要么最大子数组就是当前迭代元素array[i];</span><br><span class="line">         * 要么最大子数组在在array[0...i]中,在array[0...i]中的话必然和前一个元素相连,</span><br><span class="line">         * 那么，当前元素加上前一个元素包含自身的最大子数组即为当前元素包含自身的最大子数组.</span><br><span class="line">         */</span><br><span class="line">        for (int i = 0; i &lt; array.length; i++) &#123;</span><br><span class="line">            if ((containCurent + array[i]) &gt;= array[i]) &#123;</span><br><span class="line">                containCurent = containCurent + array[i];</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                containCurent = array[i];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            if (containCurent &gt; ahead) &#123;</span><br><span class="line">                ahead = containCurent;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return ahead;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer[] testArray = &#123;-500,10,5,5,2,-3,-29,-10,-50,22,-23,10,150,1,9,-900,-26,3,99,7&#125;;</span><br><span class="line">        for (int i = 0; i &lt; testArray.length; i++) &#123;</span><br><span class="line">            System.out.print(testArray[i] + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        </span><br><span class="line">        Integer max = find(testArray);</span><br><span class="line">        System.out.println(max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// 输出：</span><br><span class="line">// -500,10,5,5,2,-3,-29,-10,-50,22,-23,10,150,1,9,-900,-26,3,99,7,</span><br><span class="line">// 170</span><br></pre></td></tr></table></figure>
+<p>两种方式的测试数据相同，结果也相同。感兴趣的伙伴可以自己验证下。当然严格的算法正确性这里就不多解释了，因为就算给出一万组测试也不能证明，还是要用循环不变式等科学的方式严谨的证明。</p>
+<p>至此两种方式已介绍完毕，其实还有更好的解法，比如更加牛逼高大上的动态规划。以后会写出来补充。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/Merge_and_InsertSort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="田恬的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/20/Merge_and_InsertSort/" itemprop="url">两种实用的排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T22:52:17+08:00">
+                2018-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/20/Merge_and_InsertSort/" class="leancloud_visitors" data-flag-title="两种实用的排序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序是多种较为实用的排序方法之一。很多更高效的排序，当输入规模降低到一定程度就会切换到插入排序，因为在局部有序并且规模较小的情况下，插入排序非常高效。以下为代码实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/9.</span><br><span class="line"> */</span><br><span class="line">public class InsertSort &#123;</span><br><span class="line">    </span><br><span class="line">    public static void sort(Integer[] destArray) &#123;</span><br><span class="line">        int len = destArray.length;</span><br><span class="line"> </span><br><span class="line">        for (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">            Integer j = i;</span><br><span class="line">            Integer temp = destArray[j];</span><br><span class="line">            while (j &gt; 0 &amp;&amp; destArray[j-1] &gt; temp) &#123;</span><br><span class="line">                destArray[j] = destArray[j-1];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            destArray[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Random random =  new Random();</span><br><span class="line">        Integer[] array = new Integer[20];</span><br><span class="line">        for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">            Integer number = random.nextInt(100);</span><br><span class="line">            array[i] = number;</span><br><span class="line">            System.out.print(number + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        InsertSort.sort(array);</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        for(Integer i : array) &#123;</span><br><span class="line">            System.out.print(i + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试实用Random随机生成20个100以内的数：</p>
+<p>67,64,95,52,62,75,3,44,14,86,75,10,43,25,17,24,11,53,69,63<br>运行后输出如下：</p>
+<p>3,10,11,14,17,24,25,43,44,52,53,62,63,64,67,69,75,75,86,95</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是较高级的排序方式，最坏情况时间复杂度为logN。该排序方式的分治思想非常值得学习。分治思想大概是这样，将规模较大的问题拆分为性质相同的小规模问题，小规模问题在次以相同方式拆分，直到出现基本情况（不能再拆分时）时返回。分治方法解决问题时将问题抽象为三步：分解、解决、合并。分解就是将问题拆分成更小规模；解决就是解决小规模问题；合并是将小规模问题解决后的结果合并。以下为java的实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/10.</span><br><span class="line"> */</span><br><span class="line">public class MergeSort &#123;</span><br><span class="line">    </span><br><span class="line">    public static void sort(Integer[] array, int low, int height) &#123;</span><br><span class="line">        if (low == height) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        // 分解 </span><br><span class="line">        int middle = (low+height) / 2;</span><br><span class="line">        </span><br><span class="line">        // 解决</span><br><span class="line">        sort(array, low, middle);</span><br><span class="line">        sort(array, middle+1, height);</span><br><span class="line">        </span><br><span class="line">        // 合并</span><br><span class="line">         merge(array, low, middle, height);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void merge(Integer[] array, int low, int middle, int height) &#123;</span><br><span class="line">        // 将已有序的两个子数组，存入两个临时数组中</span><br><span class="line">        int len1 = middle - low + 1;</span><br><span class="line">        int len2 = height - middle;</span><br><span class="line">        Integer[] temp1 = new Integer[len1+1];</span><br><span class="line">        Integer[] temp2 = new Integer[len2+1];</span><br><span class="line"> </span><br><span class="line">        for (int i = 0; i &lt; len1; i++) &#123;</span><br><span class="line">            temp1[i] = array[low+i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        middle++;</span><br><span class="line">        for (int j = 0; j &lt; len2; j++) &#123;</span><br><span class="line">            temp2[j] = array[middle+j];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 为了保证归并操作完整执行，加入两个哨兵</span><br><span class="line">        temp1[len1] = 1000;</span><br><span class="line">        temp2[len2] =1000;</span><br><span class="line">        </span><br><span class="line">        int m = 0,n = 0;</span><br><span class="line">        // 归并操作</span><br><span class="line">        for (int i = low; i &lt;= height; i++) &#123;</span><br><span class="line">            if (temp1[n] &lt; temp2[m]) &#123;</span><br><span class="line">                array[i] = temp1[n++];</span><br><span class="line">                continue;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                array[i] = temp2[m++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Random random =  new Random();</span><br><span class="line">        Integer[] array = new Integer[20];</span><br><span class="line">        </span><br><span class="line">        for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">            Integer number = random.nextInt(100);</span><br><span class="line">            array[i] = number;</span><br><span class="line">            System.out.print(number + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        MergeSort.sort(array, 0, array.length-1);</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        for(Integer i : array) &#123;</span><br><span class="line">            System.out.print(i + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试方法同插入排序。</p>
+<p>输入：62,29,93,74,69,73,83,21,33,33,11,34,80,82,13,17,92,13,63,2</p>
+<p>输出：2,11,13,13,17,21,29,33,33,34,62,63,69,73,74,80,82,83,92,93</p>
+<p>算法思想不难，代码也没多少行，但调试到正确运行确实挺不容易（递归调用一层套一层，调着调着就晕了…）。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/Strategy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1175,7 +1507,7 @@ public void showProperty1() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1186,7 +1518,7 @@ public void showProperty1() {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1197,7 +1529,7 @@ public void showProperty1() {
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
