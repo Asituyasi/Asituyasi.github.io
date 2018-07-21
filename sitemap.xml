@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/07/20/findMaximunSubArray/</loc>
+    
+    <lastmod>2018-07-21T09:57:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/06/10/factory/</loc>
+    
+    <lastmod>2018-07-21T09:57:07.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/07/20/Merge_and_InsertSort/</loc>
     
     <lastmod>2018-07-20T14:55:37.000Z</lastmod>
@@ -9,23 +23,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/07/20/findMaximunSubArray/</loc>
-    
-    <lastmod>2018-07-20T14:54:56.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2018/07/14/Strategy/</loc>
     
     <lastmod>2018-07-14T13:07:00.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/06/10/factory/</loc>
-    
-    <lastmod>2018-07-14T12:18:07.000Z</lastmod>
     
   </url>
   
