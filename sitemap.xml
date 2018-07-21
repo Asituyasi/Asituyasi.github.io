@@ -2,51 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2018/07/20/findMaximunSubArray/</loc>
-    
-    <lastmod>2018-07-21T09:57:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/06/10/factory/</loc>
-    
-    <lastmod>2018-07-21T09:57:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2018/07/20/Merge_and_InsertSort/</loc>
     
-    <lastmod>2018-07-20T14:55:37.000Z</lastmod>
+    <lastmod>2018-07-21T10:09:40.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/07/14/Strategy/</loc>
     
-    <lastmod>2018-07-14T13:07:00.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/06/19/builder/</loc>
-    
-    <lastmod>2018-07-14T12:17:54.000Z</lastmod>
+    <lastmod>2018-07-21T10:09:31.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/07/07/prototype/</loc>
     
-    <lastmod>2018-07-14T12:17:35.000Z</lastmod>
+    <lastmod>2018-07-21T10:09:18.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2018/07/01/singleton/</loc>
     
-    <lastmod>2018-06-30T16:57:19.000Z</lastmod>
+    <lastmod>2018-07-21T10:09:09.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/06/19/builder/</loc>
+    
+    <lastmod>2018-07-21T10:09:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/06/10/factory/</loc>
+    
+    <lastmod>2018-07-21T10:08:33.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/20/findMaximunSubArray/</loc>
+    
+    <lastmod>2018-07-21T09:57:51.000Z</lastmod>
     
   </url>
   
