@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。 静态工厂模式静态工厂模式的实现很简单，简单到有的设计模式书籍都不它当做一种设计模式，而仅仅作为一种普通的代码组织方式。我们以汽车工厂为例展开。首先创建一个Car接口：">
+<meta name="description" content="工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式初探—工厂模式">
 <meta property="og:url" content="http://yoursite.com/2018/06/10/factory/index.html">
 <meta property="og:site_name" content="Tian-tian的博客">
-<meta property="og:description" content="工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。 静态工厂模式静态工厂模式的实现很简单，简单到有的设计模式书籍都不它当做一种设计模式，而仅仅作为一种普通的代码组织方式。我们以汽车工厂为例展开。首先创建一个Car接口：">
+<meta property="og:description" content="工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-21T10:08:33.000Z">
+<meta property="og:updated_time" content="2018-07-21T10:15:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式初探—工厂模式">
-<meta name="twitter:description" content="工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。 静态工厂模式静态工厂模式的实现很简单，简单到有的设计模式书籍都不它当做一种设计模式，而仅仅作为一种普通的代码组织方式。我们以汽车工厂为例展开。首先创建一个Car接口：">
+<meta name="twitter:description" content="工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。">
 
 
 
@@ -359,8 +359,9 @@
       
 
       
-        <p>工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。</p>
-<h2 id="静态工厂模式"><a href="#静态工厂模式" class="headerlink" title="静态工厂模式"></a>静态工厂模式</h2><p>静态工厂模式的实现很简单，简单到有的设计模式书籍都不它当做一种设计模式，而仅仅作为一种普通的代码组织方式。我们以汽车工厂为例展开。<br>首先创建一个Car接口：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface Car &#123;</span><br><span class="line"></span><br><span class="line">    public void desc();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p>工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。<br><a id="more"></a></p>
+<h2 id="静态工厂模式"><a href="#静态工厂模式" class="headerlink" title="静态工厂模式"></a>静态工厂模式</h2><p>静态工厂模式的实现很简单，简单到有的设计模式书籍都不它当做一种设计模式，而仅仅作为一种普通的代码组织方式。我们以汽车工厂为例展开。<br>首先创建一个Car接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface Car &#123;</span><br><span class="line"></span><br><span class="line">    public void desc();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>接着创建两个汽车类，奔驰和法拉利，当然也可以创建更多。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class Benz implements Car &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void desc() &#123;</span><br><span class="line">        System.out.println(&quot;I am Benz.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Ferrari implements Car&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void desc() &#123;</span><br><span class="line">        System.out.println(&quot;I am Ferrari.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们需要一个汽车工厂用来根据用户需要生产各种各样的汽车。</p>
