@@ -102,7 +102,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -508,7 +508,9 @@
 
       
         
-          <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序是多种较为实用的排序方法之一。很多更高效的排序，当输入规模降低到一定程度就会切换到插入排序，因为在局部有序并且规模较小的情况下，插入排序非常高效。以下为代码实现。<br>
+          
+          插入排序插入排序是多种较为实用的排序方法之一。很多更高效的排序，当输入规模降低到一定程度就会切换到插
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/20/Merge_and_InsertSort/#more" rel="contents">
@@ -665,11 +667,11 @@
 
       
         
-          <p>策略模式是一种行为型设计模式，维基百科解释如下</p>
-<blockquote>
-<p>行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。</p>
-</blockquote>
-<p> 由此可以看出，行为型设计模式关注的是对象之间的通讯行为。<br>
+          
+          策略模式是一种行为型设计模式，维基百科解释如下
+
+行为型设计模式：行为型设计模式是设计模式都一种，用
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/14/Strategy/#more" rel="contents">
@@ -826,7 +828,9 @@
 
       
         
-          <p>原型模式也属于创建型模式。简言之，就是如何复制一个对象的设计模式。创建对象的方式有很多种，对java而言，可以在JVM堆中new一个，也可以通过反射、序列化，又或者相应的对象工厂也可以代劳。我们关注的点是，创建对象的开销。当创建一个对象的消耗比较大的时候，使用原型模式可以很高效的创建对象。在java中顶层对象Object提供了clone()方法，只要我们正确的实现Cloneable接口的clone()方法，就可以实现对象的克隆。<br>
+          
+          原型模式也属于创建型模式。简言之，就是如何复制一个对象的设计模式。创建对象的方式有很多种，对java
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/07/prototype/#more" rel="contents">
@@ -983,7 +987,9 @@
 
       
         
-          <h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/6/29.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class HungrySingleTon &#123;</span><br><span class="line">    private static HungrySingleTon uniqueInstance = new HungrySingleTon();</span><br><span class="line">    </span><br><span class="line">    private HungrySingleTon()&#123;</span><br><span class="line">        System.out.println(&quot;HungrySingleTon is creating a instance.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static HungrySingleTon getInstance() &#123;</span><br><span class="line">        return uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          
+          饿汉式该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/01/singleton/#more" rel="contents">
@@ -1140,10 +1146,12 @@
 
       
         
-          <ol>
-<li>定义：将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。</li>
-</ol>
-<p>简单点描述就是将一个复杂对象的构建拆分成若干步骤，每个构建步骤赋予复杂对象不同的属性，如此以来，通过同样的构建过程可以创建不同的对象。对象的构建过程由指导者director指导。客户端通过指导者创建需要的对象。<br>
+          
+          
+定义：将一个复杂的对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。
+
+简单点描述就
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/06/19/builder/#more" rel="contents">
@@ -1300,7 +1308,9 @@
 
       
         
-          <p>工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式。工厂模式主要有工厂方法模式和抽象工厂模式。<br>
+          
+          工厂模式简而言之就是用来创建对象的，属于创建型设计模式。此类模式还包括单例模式、建造者模式、原型模式
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/06/10/factory/#more" rel="contents">
