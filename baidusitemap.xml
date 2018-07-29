@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/07/28/temlateMethod/</loc>
+    <lastmod>2018-07-29T07:36:50.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式初探—模版方法模式</title>
+        <pubTime>2018-07-28T08:32:21.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/07/28/heapSort/</loc>
+    <lastmod>2018-07-29T07:36:28.000Z</lastmod>
+    <data>
+        <display>
+        <title>堆排序</title>
+        <pubTime>2018-07-28T08:49:16.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/07/22/Observer/</loc>
     <lastmod>2018-07-22T11:45:22.000Z</lastmod>
     <data>

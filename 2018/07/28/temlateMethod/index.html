@@ -83,20 +83,20 @@
 
 
 
-<meta name="description" content="策略模式是一种行为型设计模式，维基百科解释如下  行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。   由此可以看出，行为型设计模式关注的是对象之间的通讯行为。  定义  策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。  角色分类1.抽象策略接口2.具体策略类3.环">
+<meta name="description" content="定义定义一个算法中的操作框架，而将一些步骤延迟到子类中。使得子类可以不改变算法结构即可重定义该算法的某些特定步骤。 角色该设计模式的角色划分较为简单  抽象模版类 具体模版类  抽象模版类又包含了这样几个方法：模版方法，具体方法，抽象方法，勾子方法。  模版方法  决定了算法的实现步骤，该方法中调用了具体方法，待实现的抽象方法，勾子方法等。是算法执行的一个模版。  具体方法  具体方法是算法中较稳">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式初探—策略模式">
-<meta property="og:url" content="http://yoursite.com/2018/07/14/Strategy/index.html">
+<meta property="og:title" content="设计模式初探—模版方法模式">
+<meta property="og:url" content="http://yoursite.com/2018/07/28/temlateMethod/index.html">
 <meta property="og:site_name" content="Tian-tian的博客">
-<meta property="og:description" content="策略模式是一种行为型设计模式，维基百科解释如下  行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。   由此可以看出，行为型设计模式关注的是对象之间的通讯行为。  定义  策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。  角色分类1.抽象策略接口2.具体策略类3.环">
+<meta property="og:description" content="定义定义一个算法中的操作框架，而将一些步骤延迟到子类中。使得子类可以不改变算法结构即可重定义该算法的某些特定步骤。 角色该设计模式的角色划分较为简单  抽象模版类 具体模版类  抽象模版类又包含了这样几个方法：模版方法，具体方法，抽象方法，勾子方法。  模版方法  决定了算法的实现步骤，该方法中调用了具体方法，待实现的抽象方法，勾子方法等。是算法执行的一个模版。  具体方法  具体方法是算法中较稳">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0">
-<meta property="og:updated_time" content="2018-07-21T10:31:45.000Z">
+<meta property="og:image" content="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuN9CAYufIamkKKZEIImkLe1nGr9p2t8IIr9zKqioybCKghcq5KfGX3GqWKA9KDL8Gfb0HQcvgNabgIb8eXdv-TbmRYqN5yGov_oyvABKabImPQamamqLgf6C9jCG8seOOaoi8JX2pQP6LnUN9ydGOqI67cCkXzIy56140m00">
+<meta property="og:updated_time" content="2018-07-29T07:36:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式初探—策略模式">
-<meta name="twitter:description" content="策略模式是一种行为型设计模式，维基百科解释如下  行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。   由此可以看出，行为型设计模式关注的是对象之间的通讯行为。  定义  策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。  角色分类1.抽象策略接口2.具体策略类3.环">
-<meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0">
+<meta name="twitter:title" content="设计模式初探—模版方法模式">
+<meta name="twitter:description" content="定义定义一个算法中的操作框架，而将一些步骤延迟到子类中。使得子类可以不改变算法结构即可重定义该算法的某些特定步骤。 角色该设计模式的角色划分较为简单  抽象模版类 具体模版类  抽象模版类又包含了这样几个方法：模版方法，具体方法，抽象方法，勾子方法。  模版方法  决定了算法的实现步骤，该方法中调用了具体方法，待实现的抽象方法，勾子方法等。是算法执行的一个模版。  具体方法  具体方法是算法中较稳">
+<meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuN9CAYufIamkKKZEIImkLe1nGr9p2t8IIr9zKqioybCKghcq5KfGX3GqWKA9KDL8Gfb0HQcvgNabgIb8eXdv-TbmRYqN5yGov_oyvABKabImPQamamqLgf6C9jCG8seOOaoi8JX2pQP6LnUN9ydGOqI67cCkXzIy56140m00">
 
 
 
@@ -126,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/14/Strategy/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/28/temlateMethod/"/>
 
 
 
 
 
-  <title>设计模式初探—策略模式 | Tian-tian的博客</title>
+  <title>设计模式初探—模版方法模式 | Tian-tian的博客</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/Strategy/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/temlateMethod/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tian-tian">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式初探—策略模式</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式初探—模版方法模式</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T20:13:42+08:00">
-                2018-07-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T16:32:21+08:00">
+                2018-07-28
               </time>
             
 
@@ -321,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/14/Strategy/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/14/Strategy/" itemprop="commentsCount"></span>
+                <a href="/2018/07/28/temlateMethod/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/28/temlateMethod/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,7 +330,7 @@
 
           
           
-             <span id="/2018/07/14/Strategy/" class="leancloud_visitors" data-flag-title="设计模式初探—策略模式">
+             <span id="/2018/07/28/temlateMethod/" class="leancloud_visitors" data-flag-title="设计模式初探—模版方法模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -361,36 +361,32 @@
       
 
       
-        <p>策略模式是一种行为型设计模式，维基百科解释如下</p>
-<blockquote>
-<p>行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。</p>
-</blockquote>
-<p> 由此可以看出，行为型设计模式关注的是对象之间的通讯行为。</p>
+        <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>定义一个算法中的操作框架，而将一些步骤延迟到子类中。使得子类可以不改变算法结构即可重定义该算法的某些特定步骤。</p>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p>该设计模式的角色划分较为简单</p>
 <ul>
-<li>定义</li>
+<li>抽象模版类</li>
+<li>具体模版类</li>
 </ul>
-<p>策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。</p>
+<p>抽象模版类又包含了这样几个方法：模版方法，具体方法，抽象方法，勾子方法。</p>
 <ul>
-<li><p>角色分类<br>1.抽象策略接口<br>2.具体策略类<br>3.环境类</p>
-</li>
-<li><p>UML图：</p>
-</li>
+<li>模版方法</li>
 </ul>
-<p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0" alt="image"></p>
-<p>常点外卖的大概都知道，美团或者饿了么支付时会有一项延迟险可选。美团是迟到十分钟只用支付90%的费用，迟到三十分钟只用支付70%。迟到十分钟之内是可以容忍的，毕竟外卖小哥也十分不容易。无论刮风下雨都要完成客户的吃饭需求。我们以延迟险为例构建示例代码。</p>
+<p>决定了算法的实现步骤，该方法中调用了具体方法，待实现的抽象方法，勾子方法等。是算法执行的一个模版。</p>
 <ul>
-<li>示例代码</li>
+<li>具体方法</li>
 </ul>
-<p>首先是抽象延迟险策略类，方法computePrice会根据不同的策略类的实现计算出客户实际上需要支付的价格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public interface OverdueInsurenceStrategy &#123;</span><br><span class="line">    </span><br><span class="line">    double computePrice(double price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>三个具体的实现类分别为正常到达，迟到十分钟和迟到三十分钟。<br>正常到达输出原价。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class NormalStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>迟到十分钟会有0.9的折扣。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class TenMinuteLateStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.9;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>迟到三十分钟0.7的折扣。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class ThirtyMinutesStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.7;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>支付环境拥有一个OverdueInsurenceStrategy类型对象，并且会根据具体的策略对象计算出该订单实际的费用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class PayContext &#123;</span><br><span class="line">    </span><br><span class="line">    OverdueInsurenceStrategy strategy;</span><br><span class="line">    </span><br><span class="line">    PayContext(OverdueInsurenceStrategy strategy) &#123;</span><br><span class="line">        this.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void pay(double price) &#123;</span><br><span class="line">        System.out.println(strategy.computePrice(price) + &quot; RMB&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>客户端测试类如下。假设下雨天，外卖小哥迟到了十分钟。那么客户端采用的具体策略为TenMinuteLateStrategy。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        OverdueInsurenceStrategy tenMinStrategy = new TenMinuteLateStrategy();</span><br><span class="line">        PayContext context = new PayContext(tenMinStrategy);</span><br><span class="line">        context.pay(22.9); // output : 20.61 RMB</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>策略模式的定义中强调了该模式中，算法的变化独立于算法的使用者。用该示例来说就是，假如美团延迟险赔偿比例发生了变化，那么具体的策略类的实现必然会变，而算法的使用者（示例中的客户端）并不知晓这一变化。</p>
+<p>具体方法是算法中较稳稳定的部分，所以抽象类中给出了方法的具体实现。</p>
+<ul>
+<li>抽象方法</li>
+</ul>
+<p>抽象方法正是定义中所说的延迟到子类实现的方法。</p>
+<ul>
+<li>勾子方法</li>
+</ul>
+<p>一般模版方法会给出默认实现，子类中看情况对这个方法进行覆盖重写。</p>
+<h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuN9CAYufIamkKKZEIImkLe1nGr9p2t8IIr9zKqioybCKghcq5KfGX3GqWKA9KDL8Gfb0HQcvgNabgIb8eXdv-TbmRYqN5yGov_oyvABKabImPQamamqLgf6C9jCG8seOOaoi8JX2pQP6LnUN9ydGOqI67cCkXzIy56140m00" alt=""></p>
+<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/28</span><br><span class="line"> */</span><br><span class="line">public abstract class AbstractTemplateMethod &#123;</span><br><span class="line">    </span><br><span class="line">    public void templateMethod() &#123;</span><br><span class="line">        implementedMethod();</span><br><span class="line">        abstractMethod();</span><br><span class="line">        hookMethod();</span><br><span class="line">        // ... more than method invoke</span><br><span class="line">    &#125;</span><br><span class="line">    public void anotherTemplateMethod() &#123;</span><br><span class="line">        // do other things</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public abstract void abstractMethod();</span><br><span class="line">    </span><br><span class="line">    public void hookMethod() &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    public void implementedMethod() &#123;</span><br><span class="line">        System.out.println(&quot;I have been implemented in TemplateMethod class.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // ... more than method abstract or implemented.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/28</span><br><span class="line"> */</span><br><span class="line">public class ConcreteTempleteMethod extends AbstractTemplateMethod &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void abstractMethod() &#123;</span><br><span class="line">        System.out.println(&quot;Do something&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void hookMethod() &#123;</span><br><span class="line">        System.out.println(&quot;Do something in hookMethod&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -445,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/07/prototype/" rel="next" title="设计模式初探—原型模式">
-                <i class="fa fa-chevron-left"></i> 设计模式初探—原型模式
+              <a href="/2018/07/22/Observer/" rel="next" title="设计模式初探—观察者模式">
+                <i class="fa fa-chevron-left"></i> 设计模式初探—观察者模式
               </a>
             
           </div>
@@ -455,8 +451,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/20/Merge_and_InsertSort/" rel="prev" title="两种实用的排序">
-                两种实用的排序 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/28/heapSort/" rel="prev" title="堆排序">
+                堆排序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -516,8 +512,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -597,6 +602,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#角色"><span class="nav-number">2.</span> <span class="nav-text">角色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UML"><span class="nav-number">3.</span> <span class="nav-text">UML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现过程"><span class="nav-number">4.</span> <span class="nav-text">实现过程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

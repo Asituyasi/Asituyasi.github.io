@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/07/28/temlateMethod/</loc>
+    
+    <lastmod>2018-07-29T07:36:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/28/heapSort/</loc>
+    
+    <lastmod>2018-07-29T07:36:28.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/07/22/Observer/</loc>
     
     <lastmod>2018-07-22T11:45:22.000Z</lastmod>
