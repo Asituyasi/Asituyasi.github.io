@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/08/05/priority_queue/</loc>
+    
+    <lastmod>2018-08-05T15:34:11.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/08/05/quick_sort/</loc>
+    
+    <lastmod>2018-08-05T15:33:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/07/28/temlateMethod/</loc>
     
     <lastmod>2018-07-29T07:36:50.000Z</lastmod>

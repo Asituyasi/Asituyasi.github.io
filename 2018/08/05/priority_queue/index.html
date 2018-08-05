@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="设计模式," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -83,20 +83,18 @@
 
 
 
-<meta name="description" content="策略模式是一种行为型设计模式，维基百科解释如下  行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。   由此可以看出，行为型设计模式关注的是对象之间的通讯行为。  定义  策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。  角色分类1.抽象策略接口2.具体策略类3.环">
-<meta name="keywords" content="设计模式">
+<meta name="description" content="该优先队列的实现依赖于最大堆。关于最大堆，之前的博文:堆排序有讲。  heapMaximum返回堆中键最大的元素,即array[0]。 heapExtractMax方法删除并返回最大堆中最大键元素。 heapIncreaseKey的作用是将元素i的关键字值增加到key maxHeapInsert方法是将元素插入到最大堆中  1234567891011121314151617181920212223">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式初探—策略模式">
-<meta property="og:url" content="http://yoursite.com/2018/07/14/Strategy/index.html">
+<meta property="og:title" content="优先队列的实现">
+<meta property="og:url" content="http://yoursite.com/2018/08/05/priority_queue/index.html">
 <meta property="og:site_name" content="Tian-tian的博客">
-<meta property="og:description" content="策略模式是一种行为型设计模式，维基百科解释如下  行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。   由此可以看出，行为型设计模式关注的是对象之间的通讯行为。  定义  策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。  角色分类1.抽象策略接口2.具体策略类3.环">
+<meta property="og:description" content="该优先队列的实现依赖于最大堆。关于最大堆，之前的博文:堆排序有讲。  heapMaximum返回堆中键最大的元素,即array[0]。 heapExtractMax方法删除并返回最大堆中最大键元素。 heapIncreaseKey的作用是将元素i的关键字值增加到key maxHeapInsert方法是将元素插入到最大堆中  1234567891011121314151617181920212223">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0">
-<meta property="og:updated_time" content="2018-07-21T10:31:45.000Z">
+<meta property="og:updated_time" content="2018-08-05T15:34:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式初探—策略模式">
-<meta name="twitter:description" content="策略模式是一种行为型设计模式，维基百科解释如下  行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。   由此可以看出，行为型设计模式关注的是对象之间的通讯行为。  定义  策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。  角色分类1.抽象策略接口2.具体策略类3.环">
-<meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0">
+<meta name="twitter:title" content="优先队列的实现">
+<meta name="twitter:description" content="该优先队列的实现依赖于最大堆。关于最大堆，之前的博文:堆排序有讲。  heapMaximum返回堆中键最大的元素,即array[0]。 heapExtractMax方法删除并返回最大堆中最大键元素。 heapIncreaseKey的作用是将元素i的关键字值增加到key maxHeapInsert方法是将元素插入到最大堆中  1234567891011121314151617181920212223">
 
 
 
@@ -126,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/14/Strategy/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/05/priority_queue/"/>
 
 
 
 
 
-  <title>设计模式初探—策略模式 | Tian-tian的博客</title>
+  <title>优先队列的实现 | Tian-tian的博客</title>
   
 
 
@@ -251,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/Strategy/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/priority_queue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tian-tian">
@@ -268,7 +266,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式初探—策略模式</h1>
+          <h1 class="post-title" itemprop="name headline">优先队列的实现</h1>
         
 
         <div class="post-meta">
@@ -280,8 +278,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T20:13:42+08:00">
-                2018-07-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T23:26:34+08:00">
+                2018-08-05
               </time>
             
 
@@ -303,8 +301,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
                   </a>
                 </span>
 
@@ -321,8 +319,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/14/Strategy/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/14/Strategy/" itemprop="commentsCount"></span>
+                <a href="/2018/08/05/priority_queue/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/05/priority_queue/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -330,7 +328,7 @@
 
           
           
-             <span id="/2018/07/14/Strategy/" class="leancloud_visitors" data-flag-title="设计模式初探—策略模式">
+             <span id="/2018/08/05/priority_queue/" class="leancloud_visitors" data-flag-title="优先队列的实现">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -361,36 +359,16 @@
       
 
       
-        <p>策略模式是一种行为型设计模式，维基百科解释如下</p>
-<blockquote>
-<p>行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。</p>
-</blockquote>
-<p> 由此可以看出，行为型设计模式关注的是对象之间的通讯行为。</p>
+        <p>该优先队列的实现依赖于最大堆。关于最大堆，之前的博文:堆排序有讲。</p>
 <ul>
-<li>定义</li>
+<li>heapMaximum返回堆中键最大的元素,即array[0]。</li>
+<li>heapExtractMax方法删除并返回最大堆中最大键元素。</li>
+<li>heapIncreaseKey的作用是将元素i的关键字值增加到key</li>
+<li>maxHeapInsert方法是将元素插入到最大堆中</li>
 </ul>
-<p>策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。</p>
-<ul>
-<li><p>角色分类<br>1.抽象策略接口<br>2.具体策略类<br>3.环境类</p>
-</li>
-<li><p>UML图：</p>
-</li>
-</ul>
-<p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0" alt="image"></p>
-<p>常点外卖的大概都知道，美团或者饿了么支付时会有一项延迟险可选。美团是迟到十分钟只用支付90%的费用，迟到三十分钟只用支付70%。迟到十分钟之内是可以容忍的，毕竟外卖小哥也十分不容易。无论刮风下雨都要完成客户的吃饭需求。我们以延迟险为例构建示例代码。</p>
-<ul>
-<li>示例代码</li>
-</ul>
-<p>首先是抽象延迟险策略类，方法computePrice会根据不同的策略类的实现计算出客户实际上需要支付的价格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public interface OverdueInsurenceStrategy &#123;</span><br><span class="line">    </span><br><span class="line">    double computePrice(double price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>三个具体的实现类分别为正常到达，迟到十分钟和迟到三十分钟。<br>正常到达输出原价。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class NormalStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>迟到十分钟会有0.9的折扣。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class TenMinuteLateStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.9;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>迟到三十分钟0.7的折扣。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class ThirtyMinutesStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.7;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>支付环境拥有一个OverdueInsurenceStrategy类型对象，并且会根据具体的策略对象计算出该订单实际的费用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class PayContext &#123;</span><br><span class="line">    </span><br><span class="line">    OverdueInsurenceStrategy strategy;</span><br><span class="line">    </span><br><span class="line">    PayContext(OverdueInsurenceStrategy strategy) &#123;</span><br><span class="line">        this.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void pay(double price) &#123;</span><br><span class="line">        System.out.println(strategy.computePrice(price) + &quot; RMB&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>客户端测试类如下。假设下雨天，外卖小哥迟到了十分钟。那么客户端采用的具体策略为TenMinuteLateStrategy。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        OverdueInsurenceStrategy tenMinStrategy = new TenMinuteLateStrategy();</span><br><span class="line">        PayContext context = new PayContext(tenMinStrategy);</span><br><span class="line">        context.pay(22.9); // output : 20.61 RMB</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>策略模式的定义中强调了该模式中，算法的变化独立于算法的使用者。用该示例来说就是，假如美团延迟险赔偿比例发生了变化，那么具体的策略类的实现必然会变，而算法的使用者（示例中的客户端）并不知晓这一变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 优先队列</span><br><span class="line"> * Created by tiantian on 2018/7/29</span><br><span class="line"> */</span><br><span class="line">public class PriorityQueue &#123;</span><br><span class="line">    </span><br><span class="line">    public static int heapSize = 0;</span><br><span class="line">    </span><br><span class="line">    // 返回集合中最大键元素</span><br><span class="line">    public Integer heapMaximum(Integer[] array) &#123;</span><br><span class="line">        return array[0];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 去掉并返回集合中最大键元素</span><br><span class="line">    public Integer heapExtractMax(Integer[] array) throws Exception &#123;</span><br><span class="line">        heapSize = array.length;</span><br><span class="line">        if (heapSize &lt; 1) &#123;</span><br><span class="line">            throw  new Exception(&quot;heap underflow&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        Integer max = array[0];</span><br><span class="line">        array[0] = array[--heapSize];</span><br><span class="line">        MaxHeap.heapMaxHeapfy(array, 0);</span><br><span class="line">        return max;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 将元素i的关键字值增加到key</span><br><span class="line">    public  void heapIncreaseKey(Integer[] array, int i, Integer key) throws Exception &#123;</span><br><span class="line">        if (i &gt; key) &#123;</span><br><span class="line">            throw new Exception(&quot;key is smaller than current key&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        array[i] = key;</span><br><span class="line">        int parent = MaxHeap.HeapNode.parent(i);</span><br><span class="line">        while (i &gt; 0 &amp;&amp; array[parent] &lt; array[i]) &#123;</span><br><span class="line">            MaxHeap.exchange(array, i, parent);</span><br><span class="line">            i = parent;</span><br><span class="line">            parent = MaxHeap.HeapNode.parent(parent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 将元素插入到最大堆中</span><br><span class="line">    public Integer[] maxHeapInsert(Integer[] array, Integer key) throws Exception &#123;</span><br><span class="line">        heapSize = array.length + 1;</span><br><span class="line">        Integer[] newArray = new Integer[heapSize];</span><br><span class="line">        System.arraycopy(array, 0, newArray, 0, heapSize-1);</span><br><span class="line">        // 构造堆中最后一个元素为最小元素</span><br><span class="line">        newArray[heapSize-1] = -65535;</span><br><span class="line">        // 将最小元素增加到key即完成插入操作</span><br><span class="line">        heapIncreaseKey(newArray, heapSize-1, key);</span><br><span class="line">        return newArray;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优先队列所依赖的最大堆数据结构的实现如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 最大堆</span><br><span class="line"> * Created by tiantian on 2018/7/29</span><br><span class="line"> */</span><br><span class="line">public class MaxHeap &#123;</span><br><span class="line">    </span><br><span class="line">    public static int heapSize = 0;</span><br><span class="line">    // 维护最大堆</span><br><span class="line">    public static void heapMaxHeapfy(Integer[] array, int i) &#123;</span><br><span class="line">        heapSize = array.length;</span><br><span class="line">        int l = HeapNode.left(i);</span><br><span class="line">        if (l &gt;= heapSize) &#123; </span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int r = HeapNode.right(i);</span><br><span class="line">        if (r &gt;= heapSize) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int largest;</span><br><span class="line">        if (l &lt;= heapSize &amp;&amp; array[l] &gt; array[i]) &#123;</span><br><span class="line">            largest = l;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            largest = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (r &lt;= heapSize &amp;&amp; array[r] &gt; array[largest]) &#123;</span><br><span class="line">            largest = r;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (largest != i) &#123;</span><br><span class="line">            exchange(array, i, largest);</span><br><span class="line">            heapMaxHeapfy(array, largest);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 构建最大堆</span><br><span class="line">    public static void heapBuiltMaxHeap(Integer[] array) &#123;</span><br><span class="line">        int i = (array.length)/2;</span><br><span class="line">        while (i &gt;= 0) &#123;</span><br><span class="line">            heapMaxHeapfy(array, i);</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void exchange(Integer[] array, int a, int b) &#123;</span><br><span class="line">        Integer temp = array[a];</span><br><span class="line">        array[a] = array[b];</span><br><span class="line">        array[b] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 返回堆元素父节点下标，或者左右子节点下标。</span><br><span class="line">    public static class HeapNode &#123;</span><br><span class="line">        public static int parent(int i) &#123;</span><br><span class="line">            if (i == 2) &#123;</span><br><span class="line">                return 0;</span><br><span class="line">            &#125;</span><br><span class="line">            return i/2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public static int left(int i) &#123;</span><br><span class="line">            return 2*i+1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public static int right(int i) &#123;</span><br><span class="line">            return 2 * i + 2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -432,7 +410,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -445,8 +423,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/07/prototype/" rel="next" title="设计模式初探—原型模式">
-                <i class="fa fa-chevron-left"></i> 设计模式初探—原型模式
+              <a href="/2018/08/05/quick_sort/" rel="next" title="快速排序的两种实现">
+                <i class="fa fa-chevron-left"></i> 快速排序的两种实现
               </a>
             
           </div>
@@ -454,10 +432,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/20/Merge_and_InsertSort/" rel="prev" title="两种实用的排序">
-                两种实用的排序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
