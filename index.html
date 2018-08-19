@@ -248,6 +248,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/19/respChain/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian-tian的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/19/respChain/" itemprop="url">设计模式初探—责任链模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T16:23:47+08:00">
+                2018-08-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/19/respChain/" class="leancloud_visitors" data-flag-title="设计模式初探—责任链模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
+<p>属于行为型模式的一种，一个请求由多个对象来处理，这些对象形成一条链，请求沿着该链传递，直到该链上的某个对象处理它为止。</p>
+</blockquote>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><ul>
+<li>抽象处理者 定义了处理方法，并且可以设置和返回下一个处理者。为接口或抽象类</li>
+<li>具体处理者 抽象处理者的实现</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 抽象处理者</span><br><span class="line"> * Created by tiantian on 2018/8/19</span><br><span class="line"> */</span><br><span class="line">public interface IHandler &#123;</span><br><span class="line">    void handle();</span><br><span class="line">    </span><br><span class="line">    void setNextHandler(IHandler handler);</span><br><span class="line">    </span><br><span class="line">    IHandler getNextHandler();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package design.patten.chain;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 具体处理者A</span><br><span class="line"> * Created by tiantian on 2018/8/19</span><br><span class="line"> */</span><br><span class="line">public class HandlerA implements IHandler &#123;</span><br><span class="line">    private IHandler nextHandler = null;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void handle() &#123;</span><br><span class="line">        System.out.println(&quot;HandlerA do something&quot;);</span><br><span class="line">        if (this.hasNext()) &#123;</span><br><span class="line">            nextHandler.handle();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setNextHandler(IHandler handler) &#123;</span><br><span class="line">        this.nextHandler = handler ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IHandler getNextHandler() &#123;</span><br><span class="line">        return nextHandler;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private boolean hasNext() &#123;</span><br><span class="line">        return nextHandler != null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package design.patten.chain;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 具体处理者B</span><br><span class="line"> * Created by tiantian on 2018/8/19</span><br><span class="line"> */</span><br><span class="line">public class HandlerB implements IHandler &#123;</span><br><span class="line">    private IHandler nextHandler = null;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void handle() &#123;</span><br><span class="line">        System.out.println(&quot;HandlerB do something&quot;);</span><br><span class="line">        if (this.hasNext()) &#123;</span><br><span class="line">            nextHandler.handle();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setNextHandler(IHandler handler) &#123;</span><br><span class="line">        this.nextHandler = handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IHandler getNextHandler() &#123;</span><br><span class="line">        return nextHandler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean hasNext() &#123;</span><br><span class="line">        return nextHandler != null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package design.patten.chain;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 具体处理者C</span><br><span class="line"> * Created by tiantian on 2018/8/19</span><br><span class="line"> */</span><br><span class="line">public class HandlerC implements IHandler &#123;</span><br><span class="line">    private IHandler nextHandler = null;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void handle() &#123;</span><br><span class="line">        System.out.println(&quot;HandlerC do something&quot;);</span><br><span class="line">        if (this.hasNext()) &#123;</span><br><span class="line">            nextHandler.handle();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setNextHandler(IHandler handler) &#123;</span><br><span class="line">        this.nextHandler = handler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public IHandler getNextHandler() &#123;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean hasNext() &#123;</span><br><span class="line">        return nextHandler != null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        IHandler handlerA = new HandlerA();</span><br><span class="line">        IHandler handlerB = new HandlerB();</span><br><span class="line">        IHandler iHandlerC = new HandlerC();</span><br><span class="line">        </span><br><span class="line">        handlerA.setNextHandler(handlerB);</span><br><span class="line">        handlerB.setNextHandler(iHandlerC);</span><br><span class="line">        </span><br><span class="line">        handlerA.handle();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // output:</span><br><span class="line">    //HandlerA do something</span><br><span class="line">    //HandlerB do something</span><br><span class="line">    //HandlerC do something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>JS 中的事件冒泡。 Servlet中的Filter等。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>优点： 分离了请求和处理，降低了耦合。请求的处理是在链上的某个处理者处理，请求者不知道具体处理者；处理者亦不知请求的全部细节。<br>缺点： 请求链较长时性能受到影响。调试不太方便。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/iterator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1737,169 +1903,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/Merge_and_InsertSort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tian-tian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tian-tian的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/20/Merge_and_InsertSort/" itemprop="url">两种实用的排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-20T22:52:17+08:00">
-                2018-07-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/07/20/Merge_and_InsertSort/" class="leancloud_visitors" data-flag-title="两种实用的排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序是多种较为实用的排序方法之一。很多更高效的排序，当输入规模降低到一定程度就会切换到插入排序，因为在局部有序并且规模较小的情况下，插入排序非常高效。以下为代码实现。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/9.</span><br><span class="line"> */</span><br><span class="line">public class InsertSort &#123;</span><br><span class="line">    </span><br><span class="line">    public static void sort(Integer[] destArray) &#123;</span><br><span class="line">        int len = destArray.length;</span><br><span class="line"> </span><br><span class="line">        for (int i = 1; i &lt; len; i++) &#123;</span><br><span class="line">            Integer j = i;</span><br><span class="line">            Integer temp = destArray[j];</span><br><span class="line">            while (j &gt; 0 &amp;&amp; destArray[j-1] &gt; temp) &#123;</span><br><span class="line">                destArray[j] = destArray[j-1];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            destArray[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Random random =  new Random();</span><br><span class="line">        Integer[] array = new Integer[20];</span><br><span class="line">        for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">            Integer number = random.nextInt(100);</span><br><span class="line">            array[i] = number;</span><br><span class="line">            System.out.print(number + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        InsertSort.sort(array);</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        for(Integer i : array) &#123;</span><br><span class="line">            System.out.print(i + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试实用Random随机生成20个100以内的数：</p>
-<p>67,64,95,52,62,75,3,44,14,86,75,10,43,25,17,24,11,53,69,63<br>运行后输出如下：</p>
-<p>3,10,11,14,17,24,25,43,44,52,53,62,63,64,67,69,75,75,86,95</p>
-<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是较高级的排序方式，最坏情况时间复杂度为logN。该排序方式的分治思想非常值得学习。分治思想大概是这样，将规模较大的问题拆分为性质相同的小规模问题，小规模问题在次以相同方式拆分，直到出现基本情况（不能再拆分时）时返回。分治方法解决问题时将问题抽象为三步：分解、解决、合并。分解就是将问题拆分成更小规模；解决就是解决小规模问题；合并是将小规模问题解决后的结果合并。以下为java的实现。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/10.</span><br><span class="line"> */</span><br><span class="line">public class MergeSort &#123;</span><br><span class="line">    </span><br><span class="line">    public static void sort(Integer[] array, int low, int height) &#123;</span><br><span class="line">        if (low == height) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        // 分解 </span><br><span class="line">        int middle = (low+height) / 2;</span><br><span class="line">        </span><br><span class="line">        // 解决</span><br><span class="line">        sort(array, low, middle);</span><br><span class="line">        sort(array, middle+1, height);</span><br><span class="line">        </span><br><span class="line">        // 合并</span><br><span class="line">         merge(array, low, middle, height);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void merge(Integer[] array, int low, int middle, int height) &#123;</span><br><span class="line">        // 将已有序的两个子数组，存入两个临时数组中</span><br><span class="line">        int len1 = middle - low + 1;</span><br><span class="line">        int len2 = height - middle;</span><br><span class="line">        Integer[] temp1 = new Integer[len1+1];</span><br><span class="line">        Integer[] temp2 = new Integer[len2+1];</span><br><span class="line"> </span><br><span class="line">        for (int i = 0; i &lt; len1; i++) &#123;</span><br><span class="line">            temp1[i] = array[low+i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        middle++;</span><br><span class="line">        for (int j = 0; j &lt; len2; j++) &#123;</span><br><span class="line">            temp2[j] = array[middle+j];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 为了保证归并操作完整执行，加入两个哨兵</span><br><span class="line">        temp1[len1] = 1000;</span><br><span class="line">        temp2[len2] =1000;</span><br><span class="line">        </span><br><span class="line">        int m = 0,n = 0;</span><br><span class="line">        // 归并操作</span><br><span class="line">        for (int i = low; i &lt;= height; i++) &#123;</span><br><span class="line">            if (temp1[n] &lt; temp2[m]) &#123;</span><br><span class="line">                array[i] = temp1[n++];</span><br><span class="line">                continue;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                array[i] = temp2[m++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Random random =  new Random();</span><br><span class="line">        Integer[] array = new Integer[20];</span><br><span class="line">        </span><br><span class="line">        for (int i = 0; i &lt; 20; i++) &#123;</span><br><span class="line">            Integer number = random.nextInt(100);</span><br><span class="line">            array[i] = number;</span><br><span class="line">            System.out.print(number + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        MergeSort.sort(array, 0, array.length-1);</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        for(Integer i : array) &#123;</span><br><span class="line">            System.out.print(i + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>测试方法同插入排序。</p>
-<p>输入：62,29,93,74,69,73,83,21,33,33,11,34,80,82,13,17,92,13,63,2</p>
-<p>输出：2,11,13,13,17,21,29,33,33,34,62,63,69,73,74,80,82,83,92,93</p>
-<p>算法思想不难，代码也没多少行，但调试到正确运行确实挺不容易（递归调用一层套一层，调着调着就晕了…）。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1954,7 +1957,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/08/19/respChain/</loc>
+    <lastmod>2018-08-19T08:27:12.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式初探—责任链模式</title>
+        <pubTime>2018-08-19T08:23:47.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/08/11/command/</loc>
     <lastmod>2018-08-12T15:05:16.000Z</lastmod>
     <data>
