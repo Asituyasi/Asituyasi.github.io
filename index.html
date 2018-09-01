@@ -248,6 +248,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/state/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian-tian的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/01/state/" itemprop="url">设计模式初探—状态模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-01T18:22:37+08:00">
+                2018-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/01/state/" class="leancloud_visitors" data-flag-title="设计模式初探—状态模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
+<p>允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类。状态模式是一种对象行为型模式。</p>
+</blockquote>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p>状态模式角色分类如下</p>
+<ul>
+<li>抽象状态接口。定义状态的抽象行为。使用抽象类或者接口（interface）实现。</li>
+<li>具体状态接口。实现了抽象状态。</li>
+<li>环境类。聚合了一个状态引用，环境类可以根据环境的变化，动态改变状态引用所指向的具体状态对象。环境对象改变内部状态的特性，使该模式被定义为行为型设计模式。</li>
+</ul>
+<h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuUBAp2j9BKfBJ4vL22v9B4dbIiv9B2vMSCxFIovABKa5YpbY4tH229QaLfHW6AHGpQMja9Blc5oIcP-deSbLouNLQEAKEM4gGxKUAAyBiHUehYm_CqMXEBK4pDU0kAOOH6e29I7STAWin2YO8RhvK3F0f4sDdXwQQt59E75nEQJcfG035000" alt=""></p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>以电热水器为例实现，热水器包括了加热和停止加热两个状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package design.patten.state;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 热水器状态接口</span><br><span class="line"> * Created by tiantian on 2018/9/1</span><br><span class="line"> */</span><br><span class="line">public interface WaterHeaterState &#123;</span><br><span class="line">    </span><br><span class="line">    void showTemperature();</span><br><span class="line"></span><br><span class="line">    void setTemperature(int temperature);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 加热状态具体实现</span><br><span class="line"> * Created by tiantian on 2018/9/1</span><br><span class="line"> */</span><br><span class="line">public class Heating implements WaterHeaterState &#123;</span><br><span class="line">    </span><br><span class="line">    private int temperature;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void showTemperature() &#123;</span><br><span class="line">        System.out.println(String.format(&quot;Water is heating and temperature is %d now&quot;, temperature));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void setTemperature(int temperature) &#123;</span><br><span class="line">        this.temperature = temperature;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 停止加热状态</span><br><span class="line"> * Created by tiantian on 2018/9/1</span><br><span class="line"> */</span><br><span class="line">public class StopHeating implements WaterHeaterState&#123;</span><br><span class="line">    private int temperature;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void showTemperature() &#123;</span><br><span class="line">        System.out.println(String.format(&quot;Water is heating and temperature is %d now&quot;, temperature));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setTemperature(int temperature) &#123;</span><br><span class="line">        this.temperature = temperature;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 热水器（状态模式中的环境类）</span><br><span class="line"> * Created by tiantian on 2018/9/1</span><br><span class="line"> */</span><br><span class="line">public class WaterHeater &#123;</span><br><span class="line">    private WaterHeaterState state;</span><br><span class="line">    private int temperature = 0;</span><br><span class="line">    </span><br><span class="line">    public void open() &#123; </span><br><span class="line">        setState(new Heating());</span><br><span class="line">        Thread t = new Thread(() -&gt; &#123;</span><br><span class="line">            while (true) &#123;</span><br><span class="line">                this.heating();</span><br><span class="line">                state.setTemperature(temperature);</span><br><span class="line">                try &#123;</span><br><span class="line">                    // 休眠若干时间，模拟加热过程</span><br><span class="line">                    Thread.sleep(1000);</span><br><span class="line">                    showTemper();</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                if (temperature == 100) &#123;</span><br><span class="line">                    setState(new StopHeating());</span><br><span class="line">                    System.out.println(&quot;Heating done! temperature is &quot;+ temperature);</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        t.start();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void setState(WaterHeaterState state) &#123;</span><br><span class="line">        this.state = state;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public WaterHeaterState getState() &#123;</span><br><span class="line">        return state;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void heating() &#123;</span><br><span class="line">        temperature += 10;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void showTemper() &#123;</span><br><span class="line">        state.showTemperature();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 热水器测试</span><br><span class="line"> * Created by tiantian on 2018/9/1</span><br><span class="line"> */</span><br><span class="line">public class WaterHeaterTest &#123;</span><br><span class="line">    public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line">        WaterHeater wh = new WaterHeater();</span><br><span class="line">        wh.open();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// output: 程序陆续输出如下</span><br><span class="line">// Water is heating and temperature is 10 now</span><br><span class="line">// Water is heating and temperature is 20 now</span><br><span class="line">// Water is heating and temperature is 30 now</span><br><span class="line">// Water is heating and temperature is 40 now</span><br><span class="line">// Water is heating and temperature is 50 now</span><br><span class="line">// Water is heating and temperature is 60 now</span><br><span class="line">// Water is heating and temperature is 70 now</span><br><span class="line">// Water is heating and temperature is 80 now</span><br><span class="line">// Water is heating and temperature is 90 now</span><br><span class="line">// Water is heating and temperature is 100 now</span><br><span class="line">// Heating done! temperature is 100</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>状态模式与策略模式及其相似，从UML结构也可以看出来。但两者又是有区别的。策略模式封装了若干算法族，让使用算法的用户自己选择具体的算法（策略)，用户要知晓具体算法的作用。而状态模式对用户完全透明，状态的转换完全由环境对象控制。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/28/select/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1702,184 +1871,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/temlateMethod/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tian-tian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tian-tian的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/28/temlateMethod/" itemprop="url">设计模式初探—模版方法模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T16:32:21+08:00">
-                2018-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/07/28/temlateMethod/" class="leancloud_visitors" data-flag-title="设计模式初探—模版方法模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>定义一个算法中的操作框架，而将一些步骤延迟到子类中。使得子类可以不改变算法结构即可重定义该算法的某些特定步骤。</p>
-<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p>该设计模式的角色划分较为简单</p>
-<ul>
-<li>抽象模版类</li>
-<li>具体模版类</li>
-</ul>
-<p>抽象模版类又包含了这样几个方法：模版方法，具体方法，抽象方法，勾子方法。</p>
-<ul>
-<li>模版方法</li>
-</ul>
-<p>决定了算法的实现步骤，该方法中调用了具体方法，待实现的抽象方法，勾子方法等。是算法执行的一个模版。</p>
-<ul>
-<li>具体方法</li>
-</ul>
-<p>具体方法是算法中较稳稳定的部分，所以抽象类中给出了方法的具体实现。</p>
-<ul>
-<li>抽象方法</li>
-</ul>
-<p>抽象方法正是定义中所说的延迟到子类实现的方法。</p>
-<ul>
-<li>勾子方法</li>
-</ul>
-<p>一般模版方法会给出默认实现，子类中看情况对这个方法进行覆盖重写。</p>
-<h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuN9CAYufIamkKKZEIImkLe1nGr9p2t8IIr9zKqioybCKghcq5KfGX3GqWKA9KDL8Gfb0HQcvgNabgIb8eXdv-TbmRYqN5yGov_oyvABKabImPQamamqLgf6C9jCG8seOOaoi8JX2pQP6LnUN9ydGOqI67cCkXzIy56140m00" alt=""></p>
-<h3 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/28</span><br><span class="line"> */</span><br><span class="line">public abstract class AbstractTemplateMethod &#123;</span><br><span class="line">    </span><br><span class="line">    public void templateMethod() &#123;</span><br><span class="line">        implementedMethod();</span><br><span class="line">        abstractMethod();</span><br><span class="line">        hookMethod();</span><br><span class="line">        // ... more than method invoke</span><br><span class="line">    &#125;</span><br><span class="line">    public void anotherTemplateMethod() &#123;</span><br><span class="line">        // do other things</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public abstract void abstractMethod();</span><br><span class="line">    </span><br><span class="line">    public void hookMethod() &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    public void implementedMethod() &#123;</span><br><span class="line">        System.out.println(&quot;I have been implemented in TemplateMethod class.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // ... more than method abstract or implemented.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/28</span><br><span class="line"> */</span><br><span class="line">public class ConcreteTempleteMethod extends AbstractTemplateMethod &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void abstractMethod() &#123;</span><br><span class="line">        System.out.println(&quot;Do something&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void hookMethod() &#123;</span><br><span class="line">        System.out.println(&quot;Do something in hookMethod&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1934,7 +1925,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
