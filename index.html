@@ -248,6 +248,316 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/03/stackAndQueue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian-tian的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/03/stackAndQueue/" itemprop="url">基于数组的栈和队列的实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T00:06:27+08:00">
+                2018-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/03/stackAndQueue/" class="leancloud_visitors" data-flag-title="基于数组的栈和队列的实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>栈和队列是非常基础但又十分重要十分常用的数据结构。栈的先入后出和队列的先入先入特性在软件工程中的应用非常广泛。以下为java版基于数组的简单实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 栈的数组实现</span><br><span class="line"> * Created by tiantian on 2018/9/1</span><br><span class="line"> */</span><br><span class="line">public class Stack &#123;</span><br><span class="line">    </span><br><span class="line">    private Object[] value;</span><br><span class="line">    private int top = -1;</span><br><span class="line">    private int size;</span><br><span class="line">    </span><br><span class="line">    public Stack(int size) &#123;</span><br><span class="line">        value = new Object[size];</span><br><span class="line">        this.size = size;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return top == 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void push(Object val) &#123;</span><br><span class="line">        if (top == size) &#123;</span><br><span class="line">            throw new StackOverflowError();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        value[++top] = val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public Object pop() &#123;</span><br><span class="line">        if (top &lt; 0) &#123;</span><br><span class="line">            throw new EmptyStackException();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Object obj = value[top];</span><br><span class="line">        top--;</span><br><span class="line">        return obj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 队列的数组实现</span><br><span class="line"> * Created by tiantian on 2018/9/1</span><br><span class="line"> */</span><br><span class="line">public class Queue &#123;</span><br><span class="line">    private Object[] queue;</span><br><span class="line">    private int length;</span><br><span class="line">    private int head = 0;</span><br><span class="line">    private int tail = 0;</span><br><span class="line"></span><br><span class="line">    public Queue(int len) &#123;</span><br><span class="line">        this.length = len;</span><br><span class="line">        queue = new Object[len];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void enQueue(Object obj) &#123;</span><br><span class="line">        if (tail == length) &#123;</span><br><span class="line">            tail = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        queue[tail++] = obj;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public Object deQueue() &#123;</span><br><span class="line">        if (queue[head] == null) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Object temp = queue[head];</span><br><span class="line">        if (head == length) &#123;</span><br><span class="line">            head = 0;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            head++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/03/MyList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian-tian的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/03/MyList/" itemprop="url">单链表的java实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-03T00:00:59+08:00">
+                2018-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/03/MyList/" class="leancloud_visitors" data-flag-title="单链表的java实现">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>链表可以抽象为若干相连起来的节点，其迭代只能顺着节点链依次访问。节点的组成简单的分为三个属性：节点的存储的值、前驱节点、后继节点。</p>
+<p>简单的单向链表的实现中有个头节点（head），迭代都是从head元素开始。链表head节点的前驱节点和链表尾部元素的后继节点都为null。向链表添加元素时，新加入的元素标记为head节点，然后改变之前的head元素的前驱节点为当前head节点即可。当删除链表某个节点时也要根据具体删除节点的位置，改变删除节点前驱和后继节点的指向。以下是使用java语言实现的单向链表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 链表的实现</span><br><span class="line"> * Created by tiantian on 2018/9/2</span><br><span class="line"> */</span><br><span class="line">public class MyList &#123;</span><br><span class="line">    private Node head = null;</span><br><span class="line"></span><br><span class="line">    public void insert(Object obj) &#123;</span><br><span class="line">        if (head == null) &#123;</span><br><span class="line">            head = new Node(obj);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Node node = new Node(obj);</span><br><span class="line">        node.setNext(head);</span><br><span class="line">        head.setPrev(node);</span><br><span class="line">        head = node;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public Node delete(Object obj) &#123;</span><br><span class="line">        Node cur = head;</span><br><span class="line">        </span><br><span class="line">        Node deleted = null;</span><br><span class="line">        if (head == null) &#123; // 链表为空时</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if (head.next == null) &#123; //只有一个元素时</span><br><span class="line">            deleted = head;</span><br><span class="line">            head = null;</span><br><span class="line">            return deleted;</span><br><span class="line">        &#125;</span><br><span class="line">        while (cur != null) &#123;</span><br><span class="line">            if (cur.getValue().equals(obj)) &#123;</span><br><span class="line">                deleted = cur;</span><br><span class="line">                </span><br><span class="line">                Node p = cur.getPrev();</span><br><span class="line">                Node n = cur.getNext();</span><br><span class="line">                if (p != null &amp;&amp; n != null) &#123; // 从链表中间删除时</span><br><span class="line">                    p.setNext(n);</span><br><span class="line">                    n.setPrev(p);</span><br><span class="line">                &#125; else if (n == null &amp;&amp; p != null) &#123; //删除尾部元素时</span><br><span class="line">                    p.setNext(null);</span><br><span class="line">                &#125; else if (n != null &amp;&amp; p == null) &#123; //删除头部元素时</span><br><span class="line">                    head = n;</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur.getNext();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur = null;</span><br><span class="line">        return deleted;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static class Node &#123;</span><br><span class="line">        private Node prev = null;</span><br><span class="line">        private Node next = null;</span><br><span class="line">        private Object value;</span><br><span class="line"></span><br><span class="line">        public Node(Object value) &#123;</span><br><span class="line">            this.value = value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public Object getValue() &#123;</span><br><span class="line">            return value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void setValue(Object value) &#123;</span><br><span class="line">            this.value = value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public Node getPrev() &#123;</span><br><span class="line">            return prev;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void setPrev(Node prev) &#123;</span><br><span class="line">            this.prev = prev;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public Node getNext() &#123;</span><br><span class="line">            return next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public void setNext(Node next) &#123;</span><br><span class="line">            this.next = next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/state/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1549,333 +1859,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/05/quick_sort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tian-tian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tian-tian的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/05/quick_sort/" itemprop="url">快速排序的两种实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-05T23:16:16+08:00">
-                2018-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/05/quick_sort/" class="leancloud_visitors" data-flag-title="快速排序的两种实现">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>快速排序是一种非常高效的基于比较的排序算法，其能在O(NlogN)的时间复杂度内完成排序。当然，这是期望运行时间，实际上也可能是O(N^2)。这取决与算法划分的是否平衡。快速排序算法的实现过程依赖于分治思想，按照分解、解决、合并的一般步骤看的话，快排实际上只用到了分解和解决两个步骤，因为快排是原址的，所以当合并的时候，排序的元素已经是有序状态了。</p>
-<p>####版本一</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 快速排序</span><br><span class="line"> * Created by tiantian on 2018/7/31</span><br><span class="line"> */</span><br><span class="line">public class QuickSort &#123;</span><br><span class="line">    </span><br><span class="line">    public void quickSort(Integer[] array, int p, int r) &#123;</span><br><span class="line">        if (p &lt; r) &#123;</span><br><span class="line">            int q = partition(array, p, r);</span><br><span class="line">            quickSort(array, p, q-1);</span><br><span class="line">            quickSort(array, q+1, r);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int partition(Integer[] array, int p, int r) &#123;</span><br><span class="line">        Integer pivot = array[r];</span><br><span class="line">        int i = p - 1;</span><br><span class="line">        for (int j = p; j &lt; r; j++) &#123;</span><br><span class="line">            if (array[j] &lt;= pivot) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                this.exchange(array, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        this.exchange(array, i+1, r);</span><br><span class="line">        </span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void exchange(Integer[] array, int a, int b) &#123;</span><br><span class="line">        Integer temp = array[a];</span><br><span class="line">        array[a] = array[b];</span><br><span class="line">        array[b] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>quickSort方法先是调用partition方法完成划分任务。然后分别两次调用自身完成解决。第二次调用自身其实不是必须的，也可以以循环的方式调用。partition方法是该排序至关重要的方法。它以最后每次划分的最后一个元素为参照，即下标为r的元素。然后比较参照元素pivot和array[j]，如果小于pivot，则交换顺序。每次的交换结果是：以i为界，大于pivot的元素在i的右侧，反之。直到遍历终止的时候这这种状态依然保持，所以从算法的正确性亦毋庸置疑。</p>
-<h4 id="版本二"><a href="#版本二" class="headerlink" title="版本二"></a>版本二</h4><p>版本二的实现是版本一的加强。版本一pivot(参照元素，专业的说法是主元)元素的选择是每次划分的数组的最后一个元素。而加强版的算法实现partition方法划分数组时是在下标为p到r的元素之间随机选择一个作为主元参与比较。这样做的原因是前面所说的，划分的平衡性的考虑。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 随机化的快速排序</span><br><span class="line"> * Created by tiantian on 2018/8/2</span><br><span class="line"> */</span><br><span class="line">public class RandomizedQuickSort &#123;</span><br><span class="line">    </span><br><span class="line">    public void randomizedQuickSort(Integer[] array, int p, int r) &#123;</span><br><span class="line">        if (p &lt; r) &#123;</span><br><span class="line">            int q = randomizedPartition(array, p, r);</span><br><span class="line">            this.randomizedQuickSort(array, p, q-1);</span><br><span class="line">            this.randomizedQuickSort(array, q+1, r);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int randomizedPartition(Integer[] array, int p, int r) &#123;</span><br><span class="line">        int random = this.randomNum(p, r);</span><br><span class="line">        this.exchange(array, random, r);</span><br><span class="line">        Integer pivot = array[r];</span><br><span class="line">        int i = p-1;</span><br><span class="line">        for (int j = p; j &lt; r; j++) &#123;</span><br><span class="line">            if (array[j] &lt;= pivot) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                this.exchange(array, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        this.exchange(array,i+1, r);</span><br><span class="line">        return i+1;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void exchange(Integer[] array, int a, int b) &#123;</span><br><span class="line">        Integer temp = array[a];</span><br><span class="line">        array[a] = array[b];</span><br><span class="line">        array[b] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    public int randomNum(int i, int j) &#123;</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        return random.nextInt(j-i) + i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer[] testArray = new Integer[100000];</span><br><span class="line">        int len = testArray.length;</span><br><span class="line">        Random random = new Random();</span><br><span class="line">        for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">            testArray[i] = random.nextInt(100000);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">//            System.out.print(testArray[i] + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        long start = System.currentTimeMillis();</span><br><span class="line">        </span><br><span class="line">        RandomizedQuickSort qs = new RandomizedQuickSort();</span><br><span class="line">        qs.randomizedQuickSort(testArray, 0, testArray.length-1);</span><br><span class="line">        long end = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;排序结果&quot;);</span><br><span class="line">        for (Integer i : testArray) &#123;</span><br><span class="line">            System.err.print(i+&quot; &lt;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        long time = end - start;</span><br><span class="line">        //System.out.print(&quot;排序耗时：&quot; + String.valueOf(time));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以下为十万个整数为测试数据的排序结果。由于数据量太多，只展示了首尾数据。感兴趣的朋友可以自己测试。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">排序结果</span><br><span class="line">0 &lt;4 &lt;5 &lt;6 &lt;7 &lt;8 &lt;9 &lt;12 &lt;15 &lt;16 &lt;17 &lt;19 &lt;20 &lt;21 &lt;21 &lt;22 &lt;25 &lt;25 &lt;25 &lt;26 &lt;27 &lt;28 &lt;30 &lt;30 &lt;31 &lt;31 &lt;32 &lt;32 &lt;38 &lt;38 &lt;38 &lt;39 &lt;39 &lt;40 &lt;41 &lt;42 &lt;42 &lt;43 &lt;45 &lt;45 &lt;46 &lt;46 &lt;49 &lt;50 &lt;51 &lt;51 &lt;51 &lt;51 &lt;52 &lt;52 &lt;52 &lt;52 &lt;53 &lt;53 &lt;54 &lt;56 &lt;56 &lt;56 &lt;59 &lt;60 &lt;61 &lt;61 &lt;62 &lt;62 &lt;63 &lt;64 &lt;67 &lt;67 &lt;68 &lt;68 &lt;69 &lt;74 &lt;75 &lt;76 &lt;76 &lt;78 &lt;78 &lt;78 &lt;78 &lt;79 &lt;79 &lt;79 &lt;81 &lt;81 &lt;82 &lt;83 &lt;83 &lt;84 &lt;84 &lt;85 &lt;85 &lt;85 &lt;87 &lt;88 &lt;89 &lt;89 &lt;90 &lt;90 &lt;90 &lt;91 &lt;92 &lt;95 &lt;96 &lt;97 &lt;97 &lt;99 &lt;100 &lt;103 &lt;103 &lt;104 &lt;106 &lt;112 &lt;115 &lt;115 &lt;116 &lt;116 &lt;116 &lt;118 &lt;118 &lt;119 &lt;121 &lt;121 &lt;123 &lt;124 &lt;124 &lt;126 &lt;126 &lt;126 &lt;127 &lt;129 &lt;129 &lt;129 &lt;132 &lt;134 &lt;135 &lt;137 &lt;139 &lt;139 &lt;139 &lt;141 &lt;141 &lt;142 &lt;142 &lt;142 &lt;145 &lt;145 &lt;146 &lt;146 &lt;146 &lt;151 &lt;151 &lt;152 &lt;152 &lt;153 &lt;154 &lt;154 &lt;154 &lt;154 &lt;154 &lt;157 &lt;158 &lt;159 &lt;159 &lt;159 &lt;159 &lt;163 &lt;163 &lt;164 &lt;166 &lt;168 &lt;170 &lt;172 &lt;172 &lt;172 &lt;173 &lt;174 &lt;175 &lt;176 &lt;177 &lt;177 &lt;178 &lt;179 &lt;179 &lt;179 &lt;179 &lt;184 &lt;184 &lt;184 &lt;184 &lt;188 &lt;188 &lt;189 &lt;191 &lt;193 &lt;195 &lt;195 &lt;196 &lt;196 &lt;198 &lt;198 &lt;198 &lt;198 &lt;199 &lt;199 &lt;201 &lt;201 &lt;202 &lt;205 &lt;207 &lt;207 &lt;208 &lt;209 &lt;212 &lt;213 &lt;214 &lt;214 &lt;215 &lt;217 &lt;217 &lt;218 &lt;218 &lt;218 &lt;220 &lt;221 &lt;221 &lt;221 &lt;222 &lt;224 &lt;226 &lt;227 &lt;227 &lt;227 &lt;228 &lt;228 &lt;229 &lt;230 &lt;230 &lt;231 &lt;231 &lt;232 &lt;233 &lt;233 &lt;233 &lt;233 &lt;234 &lt;235 &lt;235 &lt;235 &lt;236 &lt;236 &lt;236 &lt;238 &lt;238 &lt;239 &lt;239 &lt;239 &lt;240 &lt;240 &lt;240 &lt;241 &lt;241 &lt;242 &lt;242 &lt;242 &lt;243 &lt;243 &lt;245 &lt;246 &lt;246 &lt;246 &lt;247 &lt;249 &lt;250 &lt;250 &lt;251 &lt;253 &lt;255 &lt;257 &lt;257 &lt;257 &lt;260 &lt;262 &lt;262 &lt;264 &lt;265 &lt;267 &lt;268 &lt;268 &lt;268 &lt;269 &lt;270 &lt;274 &lt;274 &lt;275 &lt;275 &lt;276 &lt;276 &lt;277 &lt;278 &lt;279 &lt;279 &lt;281 &lt;281 &lt;281 &lt;284 &lt;286 &lt;288 &lt;290 &lt;291 &lt;292 &lt;295 &lt;295 &lt;296 &lt;298 &lt;298 &lt;300 &lt;301 &lt;302 &lt;305 &lt;306 &lt;306 &lt;306 &lt;308 &lt;309 &lt;310 &lt;311 &lt;312 &lt;312 &lt;312 &lt;316 &lt;316 &lt;319 &lt;322 &lt;322 &lt;322 &lt;322 &lt;324 &lt;324 &lt;327 &lt;329 &lt;329 &lt;329 &lt;330 &lt;330 &lt;331 &lt;332 &lt;332 &lt;333 &lt;333 &lt;334 &lt;337 &lt;337 &lt;338 &lt;339 &lt;340 &lt;341 &lt;342 &lt;343 &lt;344 &lt;344 &lt;345 &lt;345 &lt;346 &lt;349 &lt;349 &lt;351 &lt;352 &lt;353 &lt;354 &lt;354 &lt;354 &lt;354 &lt;357 &lt;361 &lt;361 &lt;362 &lt;364 &lt;365 &lt;366 &lt;369 &lt;370 &lt;370 &lt;371 &lt;376 &lt;376 &lt;377 &lt;377 &lt;377 &lt;378 &lt;380 &lt;381 &lt;383 &lt;384 &lt;386 &lt;388 &lt;388 &lt;388 &lt;388 &lt;389 &lt;389 &lt;390 &lt;392 &lt;393 &lt;395 &lt;395 &lt;397 &lt;397 &lt;398 &lt;398 &lt;399 &lt;400 &lt;400 &lt;400 &lt;401 &lt;402 &lt;402 &lt;406 &lt;408 &lt;408 &lt;408 &lt;408 &lt;410 &lt;410 &lt;412 &lt;413 &lt;414 &lt;415 &lt;415 &lt;416 &lt;420 &lt;420 &lt;420 &lt;422 &lt;423 &lt;425 &lt;426 &lt;427 &lt;427 &lt;427 &lt;430 &lt;431 &lt;433 ... 99641 &lt;99642 &lt;99644 &lt;99645 &lt;99646 &lt;99646 &lt;99646 &lt;99647 &lt;99648 &lt;99649 &lt;99652 &lt;99653 &lt;99656 &lt;99660 &lt;99660 &lt;99661 &lt;99662 &lt;99664 &lt;99665 &lt;99666 &lt;99666 &lt;99666 &lt;99667 &lt;99669 &lt;99669 &lt;99670 &lt;99670 &lt;99671 &lt;99671 &lt;99672 &lt;99673 &lt;99675 &lt;99675 &lt;99678 &lt;99679 &lt;99681 &lt;99681 &lt;99681 &lt;99684 &lt;99685 &lt;99686 &lt;99686 &lt;99686 &lt;99687 &lt;99687 &lt;99687 &lt;99687 &lt;99690 &lt;99690 &lt;99691 &lt;99693 &lt;99693 &lt;99693 &lt;99693 &lt;99693 &lt;99694 &lt;99694 &lt;99694 &lt;99696 &lt;99698 &lt;99699 &lt;99700 &lt;99701 &lt;99701 &lt;99702 &lt;99703 &lt;99704 &lt;99704 &lt;99704 &lt;99704 &lt;99705 &lt;99706 &lt;99706 &lt;99709 &lt;99709 &lt;99709 &lt;99710 &lt;99711 &lt;99711 &lt;99711 &lt;99712 &lt;99713 &lt;99713 &lt;99714 &lt;99719 &lt;99719 &lt;99719 &lt;99720 &lt;99721 &lt;99721 &lt;99721 &lt;99721 &lt;99722 &lt;99724 &lt;99726 &lt;99729 &lt;99729 &lt;99729 &lt;99730 &lt;99730 &lt;99732 &lt;99732 &lt;99732 &lt;99733 &lt;99734 &lt;99734 &lt;99737 &lt;99738 &lt;99740 &lt;99740 &lt;99742 &lt;99742 &lt;99742 &lt;99743 &lt;99745 &lt;99746 &lt;99746 &lt;99746 &lt;99749 &lt;99750 &lt;99752 &lt;99753 &lt;99753 &lt;99754 &lt;99756 &lt;99756 &lt;99756 &lt;99756 &lt;99757 &lt;99759 &lt;99759 &lt;99762 &lt;99763 &lt;99764 &lt;99765 &lt;99765 &lt;99765 &lt;99766 &lt;99767 &lt;99768 &lt;99769 &lt;99769 &lt;99773 &lt;99775 &lt;99775 &lt;99776 &lt;99776 &lt;99777 &lt;99777 &lt;99778 &lt;99778 &lt;99780 &lt;99780 &lt;99781 &lt;99781 &lt;99782 &lt;99782 &lt;99782 &lt;99782 &lt;99782 &lt;99785 &lt;99785 &lt;99785 &lt;99786 &lt;99787 &lt;99788 &lt;99788 &lt;99788 &lt;99789 &lt;99790 &lt;99791 &lt;99791 &lt;99792 &lt;99792 &lt;99793 &lt;99794 &lt;99796 &lt;99796 &lt;99798 &lt;99798 &lt;99799 &lt;99800 &lt;99802 &lt;99802 &lt;99803 &lt;99804 &lt;99806 &lt;99806 &lt;99808 &lt;99809 &lt;99809 &lt;99810 &lt;99811 &lt;99812 &lt;99813 &lt;99814 &lt;99815 &lt;99816 &lt;99816 &lt;99817 &lt;99817 &lt;99817 &lt;99820 &lt;99820 &lt;99823 &lt;99823 &lt;99824 &lt;99825 &lt;99826 &lt;99827 &lt;99831 &lt;99832 &lt;99833 &lt;99834 &lt;99834 &lt;99835 &lt;99835 &lt;99835 &lt;99836 &lt;99837 &lt;99839 &lt;99840 &lt;99840 &lt;99840 &lt;99840 &lt;99840 &lt;99842 &lt;99842 &lt;99843 &lt;99845 &lt;99845 &lt;99845 &lt;99847 &lt;99848 &lt;99848 &lt;99848 &lt;99850 &lt;99851 &lt;99853 &lt;99854 &lt;99854 &lt;99857 &lt;99858 &lt;99861 &lt;99862 &lt;99863 &lt;99864 &lt;99865 &lt;99866 &lt;99867 &lt;99868 &lt;99868 &lt;99868 &lt;99868 &lt;99870 &lt;99871 &lt;99871 &lt;99871 &lt;99871 &lt;99872 &lt;99873 &lt;99874 &lt;99875 &lt;99876 &lt;99876 &lt;99877 &lt;99880 &lt;99880 &lt;99881 &lt;99881 &lt;99881 &lt;99883 &lt;99884 &lt;99885 &lt;99889 &lt;99889 &lt;99890 &lt;99891 &lt;99892 &lt;99893 &lt;99896 &lt;99896 &lt;99897 &lt;99897 &lt;99898 &lt;99902 &lt;99902 &lt;99902 &lt;99904 &lt;99905 &lt;99905 &lt;99908 &lt;99909 &lt;99910 &lt;99912 &lt;99914 &lt;99915 &lt;99916 &lt;99917 &lt;99917 &lt;99919 &lt;99921 &lt;99922 &lt;99924 &lt;99924 &lt;99924 &lt;99926 &lt;99928 &lt;99928 &lt;99930 &lt;99930 &lt;99934 &lt;99934 &lt;99935 &lt;99935 &lt;99936 &lt;99937 &lt;99940 &lt;99942 &lt;99944 &lt;99945 &lt;99945 &lt;99946 &lt;99946 &lt;99947 &lt;99947 &lt;99949 &lt;99950 &lt;99950 &lt;99951 &lt;99953 &lt;99953 &lt;99955 &lt;99955 &lt;99955 &lt;99957 &lt;99961 &lt;99962 &lt;99962 &lt;99962 &lt;99963 &lt;99964 &lt;99964 &lt;99968 &lt;99969 &lt;99970 &lt;99971 &lt;99972 &lt;99973 &lt;99974 &lt;99974 &lt;99974 &lt;99975 &lt;99975 &lt;99977 &lt;99978 &lt;99979 &lt;99979 &lt;99982 &lt;99984 &lt;99984 &lt;99985 &lt;99986 &lt;99987 &lt;99987 &lt;99988 &lt;99989 &lt;99990 &lt;99990 &lt;99992 &lt;99992 &lt;99993 &lt;99994 &lt;99994 &lt;99995 &lt;99995 &lt;99997 &lt;99998 &lt;99998 &lt;99999</span><br></pre></td></tr></table></figure>
-<p>在MacO电脑上测试所用时间平均不超过100毫秒。同样数量的数据换用插入排序测得的结果是20多秒。算法的性能差异显而易见。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/heapSort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tian-tian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tian-tian的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/28/heapSort/" itemprop="url">堆排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T16:49:16+08:00">
-                2018-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/07/28/heapSort/" class="leancloud_visitors" data-flag-title="堆排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>说到堆排序不得不说一下堆这种数据结构。这里的堆指二叉堆，本质是一个数组。可看作一个近似的完全二叉树（完全二叉树是所有叶子节点深度相同，且所有内部节点度为二的二叉树）。二叉堆有两种表现形式，最大堆和最小堆。最大堆中最大元素在二叉树的根结点，最小堆正好相反。我们的目的就是利用最大堆的特点，完成排序。</p>
-<p>先上一段调试好的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 堆排序</span><br><span class="line"> * Created by tiantian on 2018/7/24</span><br><span class="line"> */</span><br><span class="line">public class HeapSort &#123;</span><br><span class="line">    </span><br><span class="line">    public static int heapSize = 0;</span><br><span class="line">    // 维护最大堆</span><br><span class="line">    public static void maxHeapfy(Integer[] array, int i) &#123;</span><br><span class="line">        int l = Node.left(i);</span><br><span class="line">        int r = Node.right(i);</span><br><span class="line">        </span><br><span class="line">        int largest;</span><br><span class="line">        if (l &lt;= heapSize &amp;&amp; array[l] &gt; array[i]) &#123;</span><br><span class="line">            largest = l;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            largest = i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if (r &lt;= heapSize &amp;&amp; array[r] &gt; array[largest]) &#123;</span><br><span class="line">            largest = r;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if (largest != i) &#123;</span><br><span class="line">            exchange(array, i, largest);</span><br><span class="line">            maxHeapfy(array, largest);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 构建最大堆</span><br><span class="line">    public static void builtMaxHeap(Integer[] array) &#123;</span><br><span class="line">        int i = (array.length)/2;</span><br><span class="line">        while (i &gt;= 0) &#123;</span><br><span class="line">            maxHeapfy(array, i);</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 排序</span><br><span class="line">    public static void sort(Integer[] array) &#123;</span><br><span class="line">        heapSize = array.length-1;</span><br><span class="line">        builtMaxHeap(array);</span><br><span class="line">        int len = array.length;</span><br><span class="line">        for (int i = len-1; i &gt;= 0 ; i--) &#123;</span><br><span class="line">            exchange(array, 0, i);</span><br><span class="line">            heapSize = heapSize - 1;</span><br><span class="line">            maxHeapfy(array,0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void exchange(Integer[] array, int a, int b) &#123;</span><br><span class="line">        Integer temp = array[a];</span><br><span class="line">        array[a] = array[b];</span><br><span class="line">        array[b] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 返回堆元素父节点，或者左右子节点。</span><br><span class="line">    public static class Node &#123;</span><br><span class="line">        public static int parent(int i) &#123;</span><br><span class="line">            return i/2;</span><br><span class="line">        &#125; </span><br><span class="line">        </span><br><span class="line">        public static int left(int i) &#123;</span><br><span class="line">            return 2*i+1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        public static int right(int i) &#123;</span><br><span class="line">            return 2 * i + 2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>客户端测试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Integer[] testArray = &#123;5,10,25,18,12,3,29,12,50,22,23,0,51,1,9,90,26,3,99,7&#125;;</span><br><span class="line">//        HeapSort.builtMaxHeap(testArray);</span><br><span class="line">//        for (Integer i : testArray) &#123;</span><br><span class="line">//            System.out.print(i+&quot;,&quot;);</span><br><span class="line">//        &#125;</span><br><span class="line">        System.out.println(&quot;排序以下数：&quot;);</span><br><span class="line">        for (int i = 0; i &lt; testArray.length; i++) &#123;</span><br><span class="line">            System.out.print(testArray[i] + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;&quot;);</span><br><span class="line">        System.out.println(&quot;排序结果：&quot;);</span><br><span class="line"></span><br><span class="line">        HeapSort.sort(testArray);</span><br><span class="line">        for (int i = 0; i &lt; testArray.length; i++) &#123;</span><br><span class="line">            System.out.print(testArray[i] + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<p>排序以下数：<br>5,10,25,18,12,3,29,12,50,22,23,0,51,1,9,90,26,3,99,7,<br>排序结果：<br>0,1,3,3,5,7,9,10,12,12,18,22,23,25,26,29,50,51,90,99,</p>
-<p>这里有三个方法说明一下。第一个maxHeapfy方法接收一个数组和一个下标i，目的是使以下标为i的节点为根元素的堆变成最大堆。通过代码可以知道这一过程是不断递归调用maxHeapfy完成堆的最大化。exchange方法是交换两个数。builtMaxHeap方法是构建一个最大堆。这里heapSize变量一定要非常注意，它的作用是sort方法的循环的每次都使maxHeapfy最大化堆的范围不断缩小，避免弄乱已有序的元素。</p>
-<p>最后总结下，堆排序是原址的或者说原地的，因为排好序的结果就是原来的数组。这里和之前的博文中讲过的归并排序比较下，归并排序的合并阶段是要借助另一数组辅助才能完成。堆排序时间复杂度为O(NlogN)。和归并一样是一种渐进最优的比较排序算法。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1925,7 +1913,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

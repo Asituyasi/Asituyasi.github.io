@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/09/03/MyList/</loc>
+    <lastmod>2018-09-02T16:12:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>单链表的java实现</title>
+        <pubTime>2018-09-02T16:00:59.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/09/03/stackAndQueue/</loc>
+    <lastmod>2018-09-02T16:12:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>基于数组的栈和队列的实现</title>
+        <pubTime>2018-09-02T16:06:27.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/09/01/state/</loc>
     <lastmod>2018-09-01T10:28:24.000Z</lastmod>
     <data>
