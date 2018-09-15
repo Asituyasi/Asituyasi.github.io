@@ -4,11 +4,31 @@
 
     
   <url>
-    <loc>http://yoursite.com/2018/09/03/MyList/</loc>
-    <lastmod>2018-09-02T16:12:49.000Z</lastmod>
+    <loc>http://yoursite.com/2018/09/15/visitor/</loc>
+    <lastmod>2018-09-15T07:45:09.000Z</lastmod>
     <data>
         <display>
-        <title>单链表的java实现</title>
+        <title>设计模式初探—访问者模式</title>
+        <pubTime>2018-09-15T07:36:18.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2018/09/03/MyList/</loc>
+    <lastmod>2018-09-03T14:26:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>双向链表的java实现</title>
         <pubTime>2018-09-02T16:00:59.000Z</pubTime>
         
         <tag>算法</tag>
