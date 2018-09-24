@@ -83,18 +83,20 @@
 
 
 
-<meta name="description" content="饿汉式该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。123456789101112131415/** * Created by tiantian on 2018/6/29. */public class HungrySingleTon &amp;#123;">
+<meta name="description" content="定义 用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。  角色 Colleague：是一个抽象类或者接口，提供和其他Colleague通讯的方法notify(String name)。参数name是其他Colleague的名字。 ColleagueA，ColleagueB：都是Colleague的实现类。 Mediato">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式的几种实现">
-<meta property="og:url" content="http://yoursite.com/2018/07/01/singleton/index.html">
+<meta property="og:title" content="设计模式初探—中介者模式">
+<meta property="og:url" content="http://yoursite.com/2018/09/24/mediator/index.html">
 <meta property="og:site_name" content="Tian-tian的博客">
-<meta property="og:description" content="饿汉式该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。123456789101112131415/** * Created by tiantian on 2018/6/29. */public class HungrySingleTon &amp;#123;">
+<meta property="og:description" content="定义 用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。  角色 Colleague：是一个抽象类或者接口，提供和其他Colleague通讯的方法notify(String name)。参数name是其他Colleague的名字。 ColleagueA，ColleagueB：都是Colleague的实现类。 Mediato">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-21T10:31:37.000Z">
+<meta property="og:image" content="http://www.plantuml.com/plantuml/png/bP3DJeKm48NtynIpX22y03S6SOqRds3I3gH9Vqmxa1Ylxougjf9u5tRLd7FcEvCPab2KrLa0uuNZJ8hnCLZBjAoCRm3D5en67yJChzMpHECNzEIuxW7tT_YH5PkDgwmUoONbYToN_WwWBAM44sj34k9ERoTwkNn7xqhjFQgVR-gXIK9Y5DxUuvGWhQjCAg2wz6VtuNE3NoXeYdMg-6Ds_CzijYxNhYkv6_fOT0njc-y5CB3NgxCV">
+<meta property="og:updated_time" content="2018-09-24T07:19:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单例模式的几种实现">
-<meta name="twitter:description" content="饿汉式该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。123456789101112131415/** * Created by tiantian on 2018/6/29. */public class HungrySingleTon &amp;#123;">
+<meta name="twitter:title" content="设计模式初探—中介者模式">
+<meta name="twitter:description" content="定义 用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。  角色 Colleague：是一个抽象类或者接口，提供和其他Colleague通讯的方法notify(String name)。参数name是其他Colleague的名字。 ColleagueA，ColleagueB：都是Colleague的实现类。 Mediato">
+<meta name="twitter:image" content="http://www.plantuml.com/plantuml/png/bP3DJeKm48NtynIpX22y03S6SOqRds3I3gH9Vqmxa1Ylxougjf9u5tRLd7FcEvCPab2KrLa0uuNZJ8hnCLZBjAoCRm3D5en67yJChzMpHECNzEIuxW7tT_YH5PkDgwmUoONbYToN_WwWBAM44sj34k9ERoTwkNn7xqhjFQgVR-gXIK9Y5DxUuvGWhQjCAg2wz6VtuNE3NoXeYdMg-6Ds_CzijYxNhYkv6_fOT0njc-y5CB3NgxCV">
 
 
 
@@ -124,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/01/singleton/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/24/mediator/"/>
 
 
 
 
 
-  <title>单例模式的几种实现 | Tian-tian的博客</title>
+  <title>设计模式初探—中介者模式 | Tian-tian的博客</title>
   
 
 
@@ -249,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/01/singleton/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/mediator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tian-tian">
@@ -266,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">单例模式的几种实现</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式初探—中介者模式</h1>
         
 
         <div class="post-meta">
@@ -278,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-01T00:51:36+08:00">
-                2018-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-24T12:27:54+08:00">
+                2018-09-24
               </time>
             
 
@@ -319,8 +321,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/01/singleton/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/01/singleton/" itemprop="commentsCount"></span>
+                <a href="/2018/09/24/mediator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/09/24/mediator/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -328,7 +330,7 @@
 
           
           
-             <span id="/2018/07/01/singleton/" class="leancloud_visitors" data-flag-title="单例模式的几种实现">
+             <span id="/2018/09/24/mediator/" class="leancloud_visitors" data-flag-title="设计模式初探—中介者模式">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -359,31 +361,26 @@
       
 
       
-        <h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>该方式创建的单例对象天生具有线程安全特性。原因很简单，JVM类加载器初次加载类的时候就创建了对象。实现起来也比较简单，只有一个地方需要注意，就是构造器要设计为private以防止类外部创建对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/6/29.</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class HungrySingleTon &#123;</span><br><span class="line">    private static HungrySingleTon uniqueInstance = new HungrySingleTon();</span><br><span class="line">    </span><br><span class="line">    private HungrySingleTon()&#123;</span><br><span class="line">        System.out.println(&quot;HungrySingleTon is creating a instance.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static HungrySingleTon getInstance() &#123;</span><br><span class="line">        return uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><p>懒汉式是一种延迟创建对象的方式。不是像饿汉一般一上来不管三七二十一就创建对象，而是在只有在需要的时候创建。此方式虽然也简单，但存在线程安全问题。在一般对性能要求不高的场景中，只要在getInstance()前加上synchronized关键字也能解决线程安全问题。只是每次获取单例对象都要同步对性能稍有影响。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/6/29.</span><br><span class="line"> */</span><br><span class="line">public class LazySingleton &#123;</span><br><span class="line">    </span><br><span class="line">    private static LazySingleton uniqueInstance;</span><br><span class="line">    </span><br><span class="line">    private LazySingleton() &#123;</span><br><span class="line">        System.out.println(&quot;LazySingleton is creating a instance.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static LazySingleton getInstance() &#123;</span><br><span class="line">        if (uniqueInstance == null) &#123;</span><br><span class="line">            return new LazySingleton();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="双重检验锁"><a href="#双重检验锁" class="headerlink" title="双重检验锁"></a>双重检验锁</h3><p>这种方式synchronized关键字使用在了创建对象的具体时刻（第一次创建时）。并且使用了volatile关键字进一步使线程安全提高。关于volatile的作用如下：</p>
-<p>1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。</p>
-<p>2）禁止进行指令重排序。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadSafeSingleton &#123;</span><br><span class="line"></span><br><span class="line">    private volatile static ThreadSafeSingleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    private ThreadSafeSingleton() &#123;</span><br><span class="line">        System.out.println(&quot;ThreadSafeSingleton is creating a instance.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static  ThreadSafeSingleton getInstance() &#123;</span><br><span class="line">        if (uniqueInstance == null) &#123;</span><br><span class="line">            synchronized (ThreadSafeSingleton.class) &#123;</span><br><span class="line">                if (uniqueInstance == null) &#123;</span><br><span class="line">                    return new ThreadSafeSingleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><p>使用枚举的方式实现单例模式最简单，性能更是不在话下。不仅能避免多线程同步问题，也能防止反序列化重新创建对象。</p>
-<p>enum Singleton {<br>    INSTANCE;</p>
-<pre><code>private String property1;
+        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><blockquote>
+<p>用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。</p>
+</blockquote>
+<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><ul>
+<li><strong>Colleague</strong>：是一个抽象类或者接口，提供和其他Colleague通讯的方法<br>notify(String name)。参数name是其他Colleague的名字。</li>
+<li><strong>ColleagueA，ColleagueB：</strong>都是Colleague的实现类。</li>
+<li><strong>Mediator:</strong> 中介者类，聚合了一系列的同事类，使得它们之间可以相互通信。具体同事类ColleagueA等都是通过Mediator，调用Mediator的notify（String name）方法向其他同事类发送消息。notify(String name)通过name找到集合中对应的Colleague并向其传递消息。Mediator类提供add(Colleague colleague)方法增加自己维护的Colleague集合中的对象。</li>
+</ul>
+<h4 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h4><p><img src="http://www.plantuml.com/plantuml/png/bP3DJeKm48NtynIpX22y03S6SOqRds3I3gH9Vqmxa1Ylxougjf9u5tRLd7FcEvCPab2KrLa0uuNZJ8hnCLZBjAoCRm3D5en67yJChzMpHECNzEIuxW7tT_YH5PkDgwmUoONbYToN_WwWBAM44sj34k9ERoTwkNn7xqhjFQgVR-gXIK9Y5DxUuvGWhQjCAg2wz6VtuNE3NoXeYdMg-6Ds_CzijYxNhYkv6_fOT0njc-y5CB3NgxCV" alt=""></p>
+<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 同事接口</span><br><span class="line"> * Created by tiantian on 2018/9/23</span><br><span class="line"> */</span><br><span class="line">public interface Colleague &#123;</span><br><span class="line">    </span><br><span class="line">    void notify(String name);</span><br><span class="line">    </span><br><span class="line">    void receive();</span><br><span class="line">    </span><br><span class="line">    String getName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 具体同事A</span><br><span class="line"> * Created by tiantian on 2018/9/23</span><br><span class="line"> */</span><br><span class="line">public class ColleagueA implements Colleague&#123;</span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public ColleagueA(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public void notify(String name) &#123;</span><br><span class="line">        Mediator.notify(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void receive() &#123;</span><br><span class="line">        System.out.println(&quot;ColleagueA received message&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 具体同事A</span><br><span class="line"> * Created by tiantian on 2018/9/23</span><br><span class="line"> */</span><br><span class="line">public class ColleagueB implements Colleague&#123;</span><br><span class="line">    </span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public ColleagueB(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void notify(String name) &#123;</span><br><span class="line">        Mediator.notify(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void receive() &#123;</span><br><span class="line">        System.out.println(&quot;ColleagueB received message&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 媒介类</span><br><span class="line"> * Created by tiantian on 2018/9/23</span><br><span class="line"> */</span><br><span class="line">public class Mediator &#123;</span><br><span class="line">    </span><br><span class="line">    private static Map&lt;String, Colleague&gt; colleagues = new HashMap&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    public static void notify(String name) &#123;</span><br><span class="line">        Colleague colleague = colleagues.get(name);</span><br><span class="line">        colleague.receive();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void add(Colleague colleague) &#123;</span><br><span class="line">        colleagues.put(colleague.getName(), colleague);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Colleague colleagueA = new ColleagueA(&quot;colleagueA&quot;);</span><br><span class="line">        Colleague colleagueB = new ColleagueB(&quot;colleagueB&quot;);</span><br><span class="line">        Mediator.add(colleagueA);</span><br><span class="line">        Mediator.add(colleagueB);</span><br><span class="line">        </span><br><span class="line">        colleagueA.notify(&quot;colleagueB&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>中介者模式使得对象之间网状的依赖关系变成星型依赖关系。对象之间通信时不必显式的相互调用，而是通过中介者间接的传递消息。这种依赖关系也符合迪米特原则。该模式缺点是，当需要互相通信的同事类数量很多的时候，中介者的复杂度将变的很高，维护难度也随之增加。</p>
+<p>&lt;!doctype html&gt;</p>
+<html style="height:100%"><br><head><br><title>圆内包含字</title><br><meta http-equiv="content-type" content="text/html;charset=gb2312"><br><style type="text/css"><br>#nouse{<br>height: 50%;<br>margin-bottom: -150px;<br>}<br>#circle{<br>width: 300px;<br>height: 300px;<br>border-radius: 150px;<br>margin:auto;<br>background-color: red;<br>border: solid 1px;<br>}<br></style><br></head><br><body style="height:100%"><br><div id="mainBody" style="height:100%"><br><div id="nouse"><br></div><br><div id="circle"><br></div><br></div><br></body><br></html>
 
-private String property2;
-
-public void doSomething() {
-    System.out.println(&quot;Singleton do something...&quot;);
-}
-
-public void setProperty1(String p) {
-    this.property1 = p;
-}
-
-public void showProperty1() {
-    System.out.println(property1);
-}
-</code></pre><p>}</p>
+<hr>
+<p>本文来自 zdavb 的CSDN 博客 ，全文地址请点击：<a href="https://blog.csdn.net/zdavb/article/details/48530043?utm_source=copy" target="_blank" rel="noopener">https://blog.csdn.net/zdavb/article/details/48530043?utm_source=copy</a></p>
 
       
     </div>
@@ -438,8 +435,8 @@ public void showProperty1() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/19/builder/" rel="next" title="设计模式初探—建造者模式">
-                <i class="fa fa-chevron-left"></i> 设计模式初探—建造者模式
+              <a href="/2018/09/15/visitor/" rel="next" title="设计模式初探—访问者模式">
+                <i class="fa fa-chevron-left"></i> 设计模式初探—访问者模式
               </a>
             
           </div>
@@ -447,10 +444,6 @@ public void showProperty1() {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/07/prototype/" rel="prev" title="设计模式初探—原型模式">
-                设计模式初探—原型模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -609,7 +602,7 @@ public void showProperty1() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#饿汉式"><span class="nav-number">1.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#懒汉式"><span class="nav-number">2.</span> <span class="nav-text">懒汉式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双重检验锁"><span class="nav-number">3.</span> <span class="nav-text">双重检验锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举"><span class="nav-number">4.</span> <span class="nav-text">枚举</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#角色"><span class="nav-number">2.</span> <span class="nav-text">角色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UML"><span class="nav-number">3.</span> <span class="nav-text">UML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">4.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
