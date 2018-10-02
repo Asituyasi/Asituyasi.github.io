@@ -248,6 +248,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/interpreter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian-tian的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/30/interpreter/" itemprop="url">设计模式初探—解释器模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-30T15:28:04+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/09/30/interpreter/" class="leancloud_visitors" data-flag-title="设计模式初探—解释器模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><blockquote>
+<p>给定一个语言，定义它的文法表示，并定义一个解释器，这个解释器使用该标识来解释语言中的句子</p>
+</blockquote>
+<h4 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h4><p><img src="http://www.plantuml.com/plantuml/png/dP2n2i8m54NtVCKR5SqNj4WT7CMXuFxInXfDql3o2XRrtqNQeQ48qZ7Xt7EJMqH6uivP8L159gmOAeinmk4HICTeMWzFiJ6UDGNIl3fYo4icuvijdDHDLxm3Xs4jtZD5sJlLsaG4SdAq-i9PUaMckNBsTGsAVLqlUSZOtwdbuJDI4fO33dVT_okQvFENbBCzPa3IAKOyPP95VZ3fnuKejAyxPpy0" alt=""></p>
+<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><ul>
+<li><p><strong>抽象表达式(Expression)</strong>：声明一个所有的<strong>具体表达式</strong>角色都需要实现的抽象接口。该接口提供一个interpret()方法。</p>
+</li>
+<li><p><strong>终结符表达式(Terminal Expression)</strong> ：实现了抽象表达式接口，有一个interpret()方法；文法中的每一个终结符都有一个具体终结表达式与之相对应。比如有一个简单的公式c=a+b，在里面a和b就是终结符，对应的解析a和b的解释器就是终结符表达式。</p>
+</li>
+<li><p><strong>非终结符表达式(Nonterminal Expression)</strong>：文法中的每一条规则都需要一个具体的非终结符表达式，非终结符表达式一般是文法中的运算符或者其他关键字，比如公式c=a+b中，“+”就是非终结符，解析“+”的解释器就是一个非终结符表达式。</p>
+</li>
+<li><p><strong>环境(Context)角色</strong>：这个角色的任务一般是用来存放文法中各个终结符所对应的具体值，比如c=a+b，我们给a赋值2，给b赋值3。这些信息需要存放到环境角色中，很多情况下我们使用Map来充当环境角色。</p>
+</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 抽象表达式</span><br><span class="line"> * Created by tiantian on 2018/9/29</span><br><span class="line"> */</span><br><span class="line">public abstract class Expression &#123;</span><br><span class="line">    public abstract int interpret(Map&lt;String, Object&gt; map);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 变量表达式（角色为：终结符表达式，解析各种变量）</span><br><span class="line"> * Created by tiantian on 2018/9/29</span><br><span class="line"> */</span><br><span class="line">public class VarExpression extends Expression &#123;</span><br><span class="line">    </span><br><span class="line">    private String key;</span><br><span class="line"></span><br><span class="line">    public VarExpression(String key) &#123;</span><br><span class="line">        this.key = key;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int interpret(Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">        return (int) map.get(key);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 抽象符号表达式</span><br><span class="line"> * Created by tiantian on 2018/9/29</span><br><span class="line"> */</span><br><span class="line">public abstract class SymbolExpression extends Expression &#123;</span><br><span class="line">    protected Expression left;</span><br><span class="line">    protected Expression right;</span><br><span class="line"></span><br><span class="line">    public SymbolExpression(Expression left, Expression right) &#123;</span><br><span class="line">        this.left = left;</span><br><span class="line">        this.right = right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 加法表达式（角色为：非终结符表达式）</span><br><span class="line"> * Created by tiantian on 2018/9/29</span><br><span class="line"> */</span><br><span class="line">public class AddExpression extends SymbolExpression &#123;</span><br><span class="line">    public AddExpression(Expression left, Expression right) &#123;</span><br><span class="line">        super(left, right);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int interpret(Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">        return super.left.interpret(map) + super.right.interpret(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 减法表达式（角色为：非终结符表达式）</span><br><span class="line"> * Created by tiantian on 2018/9/29</span><br><span class="line"> */</span><br><span class="line">public class SubExpression extends SymbolExpression &#123;</span><br><span class="line">    public SubExpression(Expression left, Expression right) &#123;</span><br><span class="line">        super(left, right);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public int interpret(Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">        return super.left.interpret(map) - super.right.interpret(map);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 加减法计算器（使用各种解释器做加减法运算）</span><br><span class="line"> * Created by tiantian on 2018/9/30</span><br><span class="line"> */</span><br><span class="line">public class Calculator &#123;</span><br><span class="line">    </span><br><span class="line">    private Expression expression;</span><br><span class="line"></span><br><span class="line">    public Calculator(String exp) &#123;</span><br><span class="line">        char[] charArray = exp.toCharArray();</span><br><span class="line">        Stack&lt;Expression&gt; stack = new Stack();</span><br><span class="line">        </span><br><span class="line">        Expression left = null;</span><br><span class="line">        Expression right = null;</span><br><span class="line">        for (int i = 0; i &lt; charArray.length; i++) &#123;</span><br><span class="line">            switch (charArray[i]) &#123;</span><br><span class="line">                case &apos;+&apos; : &#123;</span><br><span class="line">                    left = stack.pop();</span><br><span class="line">                    right = new VarExpression(String.valueOf(charArray[++i]));</span><br><span class="line">                    stack.push(new AddExpression(left, right));</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                case &apos;-&apos; : &#123;</span><br><span class="line">                    left = stack.pop();</span><br><span class="line">                    right = new VarExpression(String.valueOf(charArray[++i]));</span><br><span class="line">                    stack.push(new SubExpression(left, right));</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                default : &#123;</span><br><span class="line">                    stack.push(new VarExpression(String.valueOf(charArray[i])));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        this.expression = stack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void doCompute(Map&lt;String,Object&gt; param) &#123;</span><br><span class="line">        int res = expression.interpret(param);</span><br><span class="line">        System.out.println(&quot;Calculete result is : &quot; + res);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Calculator calculator = new Calculator(&quot;a-b&quot;);</span><br><span class="line">        Map&lt;String,Object&gt; param = new HashMap&lt;&gt;();</span><br><span class="line">        param.put(&quot;a&quot;, 2);</span><br><span class="line">        param.put(&quot;b&quot;,3);</span><br><span class="line">        </span><br><span class="line">        calculator.doCompute(param);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>解释器模式的使用场景不是很多。java中比较好的实现有expression4J。扩展性好，易于实现简单的文法，但是文法复杂时代码不好维护。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/mediator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1709,160 +1882,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/countingSort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tian-tian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tian-tian的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/11/countingSort/" itemprop="url">计数排序</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T12:33:38+08:00">
-                2018-08-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/11/countingSort/" class="leancloud_visitors" data-flag-title="计数排序">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>计数排序的思想是这样的：使用a,b,c三个数组，a存储要排序的数，c作为临时存储用，b存储最后的排序结果。很显然，这种排序方式不同于基于比较的排序算法，也非原址的。笔者的实现使用了四个for循环，虽然循环次数较多，但总的来说算法时间复杂度是O(N)，相比基于比较的排序算法时间复杂度的下界O(N(logN))要好。第一个循环将c数组内容全部置零，目的是为了给第二个循环中计数创造初始条件。第二个循环结束后，c数组中每个元素存储的将是该元素的下标在a数组中出现的次数。第三个循环后，c数组将存储每个排序元素最终排好序时的下标（为第四个循环创造条件）。紧接着第四个循环将使每个排序元素放入b数组正确的位置（第三个循环已为此创造好了条件，只需按照下标对号入座）。需要注意的是，c数组的下标是排序元素，理解了这个点将对算法的理解很有帮助。</p>
-<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package algorithms.chapter8;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 计数排序</span><br><span class="line"> * Created by tiantian on 2018/8/8</span><br><span class="line"> */</span><br><span class="line">public class CountingSort &#123;</span><br><span class="line">    </span><br><span class="line">    public Integer[] sort(Integer[] a) &#123;</span><br><span class="line">        int k = a.length;</span><br><span class="line">        Integer[] c = new Integer[k];</span><br><span class="line">        for (int i = 0; i &lt;= k-1; i++) &#123;</span><br><span class="line">            c[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int j = 1; j &lt;= k-1; j++) &#123;</span><br><span class="line">            c[a[j]] = c[a[j]] + 1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int p = 1; p &lt;= 12; p++) &#123;</span><br><span class="line">            c[p] = c[p] + c[p-1];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Integer[] b = new Integer[k];</span><br><span class="line">        for (int q = k-1; q &gt;= 1 ; q--) &#123;</span><br><span class="line">            Integer m = a[q];</span><br><span class="line">            Integer n = c[m];</span><br><span class="line">            b[n] = a[q];</span><br><span class="line">            c[m] = c[m] - 1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1917,7 +1936,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
