@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/10/02/adapter/</loc>
+    <lastmod>2018-10-02T04:34:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式初探—适配器模式</title>
+        <pubTime>2018-10-02T04:30:54.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/09/30/interpreter/</loc>
     <lastmod>2018-10-02T02:00:57.000Z</lastmod>
     <data>

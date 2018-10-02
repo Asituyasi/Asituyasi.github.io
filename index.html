@@ -248,6 +248,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/adapter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian-tian的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/02/adapter/" itemprop="url">设计模式初探—适配器模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T12:30:54+08:00">
+                2018-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/02/adapter/" class="leancloud_visitors" data-flag-title="设计模式初探—适配器模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><blockquote>
+<p>适配器模式是把一个类的接口转换成客户所期望的另一种接口，从而使原本不匹配而无法在一起工作的两个类可以一起工作。</p>
+</blockquote>
+<h4 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h4><p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuUBAp2j9BKfBJ4vL24aiIayjgURIJYlDIox9pCyprD14S8o0d5ekhkISnE9Y1SUKn8AIr5G5PCMOyaKA10o3sAXWKwEd1zN11JKPAAQh2nFZSaZDIm4w5W00" alt=""></p>
+<h4 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h4><ul>
+<li><strong>Target:</strong> 符合客户端期望的接口。</li>
+<li><strong>Adaptee:</strong> 需要被适配的类。此类包含了客户端想要实现的大部分功能，但并不能完成客户端所想完成的所有任务，同时又不能被直接修改，因此需要被适配。</li>
+<li><strong>Adapter:</strong> 适配器类。继承了Adaptee类的方法，如function1()，同时又实现了Target接口。适配器使得相互不兼容的Target和Adaptee能在Adapter中一起配合完成工作。</li>
+</ul>
+<h4 id="类适配器示例"><a href="#类适配器示例" class="headerlink" title="类适配器示例"></a>类适配器示例</h4><p>UML中的表示即为类适配器的实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 被适配的类</span><br><span class="line"> * Created by tiantian on 2018/10/2</span><br><span class="line"> */</span><br><span class="line">public class Adaptee &#123;</span><br><span class="line">    public void function1() &#123;</span><br><span class="line">        System.out.println(&quot;I&apos;m function1() who can do something, tut not enough.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 目标接口</span><br><span class="line"> * Created by tiantian on 2018/10/2</span><br><span class="line"> */</span><br><span class="line">public interface Target &#123;</span><br><span class="line">    void function1();</span><br><span class="line">    void function2();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 类适配器</span><br><span class="line"> * Created by tiantian on 2018/10/2</span><br><span class="line"> */</span><br><span class="line">public class Adapter extends Adaptee implements Target&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void function2() &#123;</span><br><span class="line">        System.out.println(&quot;I&apos;m function2() who can do another thing.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 测试</span><br><span class="line"> * Created by tiantian on 2018/10/2</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Target adapter = new Adapter();</span><br><span class="line">        adapter.function1();</span><br><span class="line">        adapter.function2();</span><br><span class="line">    &#125;</span><br><span class="line">//    I&apos;m function1() who can do something, tut not enough.</span><br><span class="line">//    I&apos;m function2() who can do another thing.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="对象适配器示例"><a href="#对象适配器示例" class="headerlink" title="对象适配器示例"></a>对象适配器示例</h4><p>对象适配器实现了Target接口，并组合了被适配类Adaptee类，使之能完成接口所期望的功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 对象适配器</span><br><span class="line"> * Created by tiantian on 2018/10/2</span><br><span class="line"> */</span><br><span class="line">public class Adapter implements Target&#123;</span><br><span class="line">    private Adaptee adaptee;</span><br><span class="line"></span><br><span class="line">    public Adapter(Adaptee adaptee) &#123;</span><br><span class="line">        this.adaptee = adaptee;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void function1() &#123;</span><br><span class="line">        adaptee.function1();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void function2() &#123;</span><br><span class="line">        System.out.println(&quot;I&apos;m function2() who can do another thing.&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>实际开发中对象适配器更为常用，因为就设计原则而言，组合的方式更灵活易用，方便扩展。组合的方式实现的对象适配器可以动态的向Adapter中注入Adatpee子类的对象。而使用继承的类适配器则可以覆盖Adaptee中的实现，具体使用哪种适配器，还是看具体的业务场景，因地制宜。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/interpreter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1715,173 +1884,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/iterator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tian-tian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tian-tian的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/12/iterator/" itemprop="url">设计模式初探—迭代器模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T10:46:34+08:00">
-                2018-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/08/12/iterator/" class="leancloud_visitors" data-flag-title="设计模式初探—迭代器模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
-<p>提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。</p>
-</blockquote>
-<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><ul>
-<li>抽象迭代器 定义了迭代器内部该有的方法</li>
-<li>具体迭代器 抽象迭代器的实现,has a 具体可迭代对象</li>
-<li>抽象容器 提供创建迭代器的方法以及一组集合对象的操作方法</li>
-<li>具体容器 实现了抽象容器</li>
-</ul>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 抽象迭代器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public interface Iterator &#123;</span><br><span class="line">    Object next();</span><br><span class="line">    boolean hasNext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 具体列表表迭代器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public class ListIterator implements Iterator &#123;</span><br><span class="line">    private MyList list;</span><br><span class="line">    private int index;</span><br><span class="line"></span><br><span class="line">    public ListIterator(MyList list) &#123;</span><br><span class="line">        this.list = list;</span><br><span class="line">        index = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object next() &#123;</span><br><span class="line">        Object obj = list.get(index);</span><br><span class="line">        index ++;</span><br><span class="line">        return obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean hasNext() &#123;</span><br><span class="line">        if (index &gt;= list.size()) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 抽象容器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public interface MyList &#123;</span><br><span class="line">    void add(Object obj);</span><br><span class="line">    </span><br><span class="line">    void remove(int i);</span><br><span class="line">    </span><br><span class="line">    Object get(int i);</span><br><span class="line">    </span><br><span class="line">    int size();</span><br><span class="line">    </span><br><span class="line">    Iterator iterator();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 具体容器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public class MyListImpl implements MyList &#123;</span><br><span class="line">    private List list = new ArrayList();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void add(Object obj) &#123;</span><br><span class="line">        list.add(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void remove(int i) &#123;</span><br><span class="line">        list.remove(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object get(int i) &#123;</span><br><span class="line">        return list.get(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int size() &#123;</span><br><span class="line">        return list.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Iterator iterator() &#123;</span><br><span class="line">        return new ListIterator(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 测试</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyList myList = new MyListImpl();</span><br><span class="line">        Iterator myListIterator = myList.iterator();</span><br><span class="line"></span><br><span class="line">        System.out.println(myListIterator.hasNext());</span><br><span class="line">        </span><br><span class="line">        myList.add(&quot;hello&quot;);</span><br><span class="line">        myList.add(&quot;world&quot;);</span><br><span class="line">        myList.add(&quot;!&quot;);</span><br><span class="line">        </span><br><span class="line">        while (myListIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(myListIterator.next());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>迭代器模式的优势是访问一个集合对象的内容而无需暴露它的内部表示。并且可以为遍历不同的结构的集合对象提供一个统一的接口。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1936,7 +1938,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

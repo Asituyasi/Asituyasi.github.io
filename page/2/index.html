@@ -248,6 +248,173 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/iterator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tian-tian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tian-tian的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/iterator/" itemprop="url">设计模式初探—迭代器模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-12T10:46:34+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/08/12/iterator/" class="leancloud_visitors" data-flag-title="设计模式初探—迭代器模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><blockquote>
+<p>提供一种方法顺序访问一个聚合对象中的各种元素，而又不暴露该对象的内部表示。</p>
+</blockquote>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><ul>
+<li>抽象迭代器 定义了迭代器内部该有的方法</li>
+<li>具体迭代器 抽象迭代器的实现,has a 具体可迭代对象</li>
+<li>抽象容器 提供创建迭代器的方法以及一组集合对象的操作方法</li>
+<li>具体容器 实现了抽象容器</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 抽象迭代器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public interface Iterator &#123;</span><br><span class="line">    Object next();</span><br><span class="line">    boolean hasNext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * desc : 具体列表表迭代器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public class ListIterator implements Iterator &#123;</span><br><span class="line">    private MyList list;</span><br><span class="line">    private int index;</span><br><span class="line"></span><br><span class="line">    public ListIterator(MyList list) &#123;</span><br><span class="line">        this.list = list;</span><br><span class="line">        index = 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object next() &#123;</span><br><span class="line">        Object obj = list.get(index);</span><br><span class="line">        index ++;</span><br><span class="line">        return obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean hasNext() &#123;</span><br><span class="line">        if (index &gt;= list.size()) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 抽象容器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public interface MyList &#123;</span><br><span class="line">    void add(Object obj);</span><br><span class="line">    </span><br><span class="line">    void remove(int i);</span><br><span class="line">    </span><br><span class="line">    Object get(int i);</span><br><span class="line">    </span><br><span class="line">    int size();</span><br><span class="line">    </span><br><span class="line">    Iterator iterator();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 具体容器</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public class MyListImpl implements MyList &#123;</span><br><span class="line">    private List list = new ArrayList();</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void add(Object obj) &#123;</span><br><span class="line">        list.add(obj);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void remove(int i) &#123;</span><br><span class="line">        list.remove(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object get(int i) &#123;</span><br><span class="line">        return list.get(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public int size() &#123;</span><br><span class="line">        return list.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Iterator iterator() &#123;</span><br><span class="line">        return new ListIterator(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * desc : 测试</span><br><span class="line"> * Created by tiantian on 2018/8/12</span><br><span class="line"> */</span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyList myList = new MyListImpl();</span><br><span class="line">        Iterator myListIterator = myList.iterator();</span><br><span class="line"></span><br><span class="line">        System.out.println(myListIterator.hasNext());</span><br><span class="line">        </span><br><span class="line">        myList.add(&quot;hello&quot;);</span><br><span class="line">        myList.add(&quot;world&quot;);</span><br><span class="line">        myList.add(&quot;!&quot;);</span><br><span class="line">        </span><br><span class="line">        while (myListIterator.hasNext()) &#123;</span><br><span class="line">            System.out.println(myListIterator.next());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>迭代器模式的优势是访问一个集合对象的内容而无需暴露它的内部表示。并且可以为遍历不同的结构的集合对象提供一个统一的接口。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/countingSort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1733,188 +1900,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/14/Strategy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tian-tian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tian-tian的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/14/Strategy/" itemprop="url">设计模式初探—策略模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-14T20:13:42+08:00">
-                2018-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/07/14/Strategy/" class="leancloud_visitors" data-flag-title="设计模式初探—策略模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>策略模式是一种行为型设计模式，维基百科解释如下</p>
-<blockquote>
-<p>行为型设计模式：行为型设计模式是设计模式都一种，用来识别对象之间的常用交流模式并加以实现。如此可在进行这些交流活动时增强弹性。</p>
-</blockquote>
-<p> 由此可以看出，行为型设计模式关注的是对象之间的通讯行为。</p>
-<ul>
-<li>定义</li>
-</ul>
-<p>策略模式：定义了算法族，分别封装起来，让它们之间可以相互替换，此模式让算法都变化独立于使用算法都客户。</p>
-<ul>
-<li><p>角色分类<br>1.抽象策略接口<br>2.具体策略类<br>3.环境类</p>
-</li>
-<li><p>UML图：</p>
-</li>
-</ul>
-<p><img src="http://www.plantuml.com/plantuml/png/SoWkIImgAStDuKhEIImkLd3Epoj9hIYfvj9L22ufIYn9JQ_agkNYoWIA5gKb9gV2HQkvj8kXJD_Kaepy50rDa4AOj89DZPuUZ6E8NTW8kx0n5nVK5RgwTd17W853QbuAqAq0" alt="image"></p>
-<p>常点外卖的大概都知道，美团或者饿了么支付时会有一项延迟险可选。美团是迟到十分钟只用支付90%的费用，迟到三十分钟只用支付70%。迟到十分钟之内是可以容忍的，毕竟外卖小哥也十分不容易。无论刮风下雨都要完成客户的吃饭需求。我们以延迟险为例构建示例代码。</p>
-<ul>
-<li>示例代码</li>
-</ul>
-<p>首先是抽象延迟险策略类，方法computePrice会根据不同的策略类的实现计算出客户实际上需要支付的价格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public interface OverdueInsurenceStrategy &#123;</span><br><span class="line">    </span><br><span class="line">    double computePrice(double price);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>三个具体的实现类分别为正常到达，迟到十分钟和迟到三十分钟。<br>正常到达输出原价。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class NormalStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>迟到十分钟会有0.9的折扣。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class TenMinuteLateStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.9;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>迟到三十分钟0.7的折扣。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class ThirtyMinutesStrategy implements OverdueInsurenceStrategy &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public double computePrice(double price) &#123;</span><br><span class="line">        return price * 0.7;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>支付环境拥有一个OverdueInsurenceStrategy类型对象，并且会根据具体的策略对象计算出该订单实际的费用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class PayContext &#123;</span><br><span class="line">    </span><br><span class="line">    OverdueInsurenceStrategy strategy;</span><br><span class="line">    </span><br><span class="line">    PayContext(OverdueInsurenceStrategy strategy) &#123;</span><br><span class="line">        this.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void pay(double price) &#123;</span><br><span class="line">        System.out.println(strategy.computePrice(price) + &quot; RMB&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>客户端测试类如下。假设下雨天，外卖小哥迟到了十分钟。那么客户端采用的具体策略为TenMinuteLateStrategy。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by tiantian on 2018/7/14.</span><br><span class="line"> */</span><br><span class="line">public class Client &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        OverdueInsurenceStrategy tenMinStrategy = new TenMinuteLateStrategy();</span><br><span class="line">        PayContext context = new PayContext(tenMinStrategy);</span><br><span class="line">        context.pay(22.9); // output : 20.61 RMB</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>策略模式的定义中强调了该模式中，算法的变化独立于算法的使用者。用该示例来说就是，假如美团延迟险赔偿比例发生了变化，那么具体的策略类的实现必然会变，而算法的使用者（示例中的客户端）并不知晓这一变化。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1969,7 +1954,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
