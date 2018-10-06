@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/10/06/facade/</loc>
+    <lastmod>2018-10-06T08:48:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式初探—门面（外观）模式</title>
+        <pubTime>2018-10-06T08:47:29.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/09/24/mediator/</loc>
     <lastmod>2018-10-05T08:09:19.000Z</lastmod>
     <data>
