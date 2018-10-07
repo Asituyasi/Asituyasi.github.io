@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/10/07/proxy/</loc>
+    
+    <lastmod>2018-10-07T12:30:24.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/10/06/facade/</loc>
     
     <lastmod>2018-10-06T08:48:27.000Z</lastmod>
