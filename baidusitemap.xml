@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/10/16/composite/</loc>
+    <lastmod>2018-10-16T08:17:58.000Z</lastmod>
+    <data>
+        <display>
+        <title>设计模式初探—组合模式</title>
+        <pubTime>2018-10-16T07:44:42.000Z</pubTime>
+        
+        <tag>设计模式</tag>
+         
+         
+           
+             
+              <breadCrumb title="设计模式" url="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/10/16/flyweitht/</loc>
     <lastmod>2018-10-16T07:28:33.000Z</lastmod>
     <data>
